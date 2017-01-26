@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>다음 지도 API</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+<body>
+<div id="map" style="width:1500px;height:350px;"></div>
+
+<script src="//apis.daum.net/maps/maps3.js?apikey=6c8b5962143b5a1331b52b5403663307"></script>
+<script>
+    var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+        mapOption = {
+            center: new daum.maps.LatLng(37.56682, 126.97864), // 지도의 중심좌표
+            level: 3, // 지도의 확대 레벨
+            mapTypeId : daum.maps.MapTypeId.ROADMAP // 지도종류
+        };
+
+    // 지도를 생성한다
+    var map = new daum.maps.Map(mapContainer, mapOption);
+
+    // 지도에 마커를 생성하고 표시한다
+    var marker = new daum.maps.Marker({
+        position: new daum.maps.LatLng(37.56682, 126.97864), // 마커의 좌표
+        map: map // 마커를 표시할 지도 객체
+    });
+
+    // 커스텀 오버레이를 생성하고 지도에 표시한다
+    var customOverlay = new daum.maps.CustomOverlay({
+        map: map,
+        content: '<div style="padding:0 5px;background:#fff;">HTML코드를 입력해주세요 :D</div>',
+        position: new daum.maps.LatLng(37.58047, 127.09094), // 커스텀 오버레이를 표시할 좌표
+        xAnchor: 0.5, // 컨텐츠의 x 위치
+        yAnchor: 0 // 컨텐츠의 y 위치
+    });
+
+    // 마커에 클릭 이벤트를 등록한다 (우클릭 : rightclick)
+    daum.maps.event.addListener(marker, 'click', function() {
+        alert('마커를 클릭했습니다!');
+    });
+
+    // 마커에 mouseover 이벤트를 등록한다
+    daum.maps.event.addListener(marker, 'mouseover', function() {
+        console.log('마커에 mouseover 이벤트가 발생했습니다!');
+    });
+
+    // 마커에 mouseout 이벤트 등록
+    daum.maps.event.addListener(marker, 'mouseout', function() {
+        console.log('마커에 mouseout 이벤트가 발생했습니다!');
+    });
+
+    var id = getParam("id");
+
+    $.getJSON( "http://api.goodroad.co.kr/api/reports/"+id, function( data ) {
+
+        console.log(data);
+        var lat = data.lat;
+        var lng = data.lng;
+        var cont = data.kind+data.cont;
+        map.setCenter(new daum.maps.LatLng(lat, lng));
+        marker.setPosition(new daum.maps.LatLng(lat, lng));
+        customOverlay.setPosition(new daum.maps.LatLng(lat, lng));
+        customOverlay.setContent('<div style="padding:0 5px;background:#fff;">'+cont+'</div>');
+
+    });
+
+    function getParam(sParam){
+
+        var sPageURL = window.location.search.substring(1);
+        var sURLVariables = sPageURL.split('&');
+        for (var i = 0; i < sURLVariables.length; i++)
+        {
+            var sParameterName = sURLVariables[i].split('=');
+            if (sParameterName[0] == sParam)
+            {
+                return sParameterName[1];
+            }
+        }
+    }
+
+</script>
+</body>
+</html>

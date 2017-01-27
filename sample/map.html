@@ -13,7 +13,7 @@
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div
         mapOption = {
             center: new daum.maps.LatLng(37.56682, 126.97864), // 지도의 중심좌표
-            level: 3, // 지도의 확대 레벨
+            level: 7, // 지도의 확대 레벨
             mapTypeId : daum.maps.MapTypeId.ROADMAP // 지도종류
         };
 
@@ -57,7 +57,7 @@
         console.log(data);
         var lat = data.lat;
         var lng = data.lng;
-        var cont = data.kind+data.cont;
+        var cont = data.writeDate+data.group2;
         map.setCenter(new daum.maps.LatLng(lat, lng));
         marker.setPosition(new daum.maps.LatLng(lat, lng));
         customOverlay.setPosition(new daum.maps.LatLng(lat, lng));

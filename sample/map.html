@@ -52,7 +52,7 @@
 
     var id = getParam("id");
 
-    $.getJSON( "http://api.goodroad.co.kr/api/reports/"+id, function( data ) {
+    $.getJSON( "http://rest.goodroad.co.kr/api/reports/"+id, function( data ) {
 
         console.log(data);
         var lat = data.lat;

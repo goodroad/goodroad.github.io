@@ -28,7 +28,7 @@
 
 </style>
 <body>
-<button class="randomize">randomize</button>
+<!--<button class="randomize">randomize</button>-->
 
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
@@ -70,14 +70,38 @@
         .domain(["Lorem ipsum", "dolor sit", "amet", "consectetur", "adipisicing", "elit", "sed", "do", "eiusmod", "tempor", "incididunt"])
         .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
 
-    function randomData (){
-        var labels = color.domain();
-        return labels.map(function(label){
-            return { label: label, value: Math.random() }
-        });
+    function randomData (d3){
+//        var labels = color.domain();
+//        return labels.map(function(label){
+//            return { label: label, value: Math.random() }
+//        });
+//
+       var datas = [
+           { label: "다람쥐", value: 100 }
+           ,{ label: "누룩뱀", value: 20 }
+           ,{ label: "유혈목이", value: 18 }
+           ,{ label: "쇠살모사", value: 17 }
+           ,{ label: "너구리", value: 16 }
+           ,{ label: "능구렁이", value: 14 }
+           ,{ label: "북방산개구리", value: 11 }
+           ,{ label: "고라니", value: 10 }
+           ,{ label: "두꺼비", value: 9 }
+           ,{ label: "청설모", value: 8 }
+           ,{ label: "조류", value: 7 }
+           ,{ label: "살모사", value: 7 }
+           ,{ label: "족제비", value: 7 }
+           ,{ label: "멧토끼", value: 4 }
+           ,{ label: "들고양이", value: 4 }
+           ,{ label: "고양이", value: 3 }
+           ,{ label: "호랑지빠귀", value: 3 }
+           ,{ label: "삵", value: 3 }
+           ,{ label: "무당개구리", value: 3 }
+       ];
+
+       return datas;
     }
 
-    change(randomData());
+    change(randomData(d3));
 
     d3.select(".randomize")
         .on("click", function(){
@@ -176,5 +200,9 @@
             .remove();
     };
 
+    function type(d) {
+        d.lable= +d.lable;
+        return d;
+    }
 </script>
 </body>

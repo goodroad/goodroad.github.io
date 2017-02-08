@@ -9,8 +9,8 @@
 </head>
 <script>
 
-    var visibleList = ["lat","lng","office","group1","group2"];
-    var url = 'http://rest.goodroad.co.kr/api/reports?page=2&size=10&sort=id,desc';
+    var visibleList = ["lat","lng","pos","road","group1","group2"];
+    var url = 'http://rest.goodroad.co.kr/api/reports?page=1&size=10&sort=id,desc';
     jQuery.ajax({
         type: 'GET',
         url: url,

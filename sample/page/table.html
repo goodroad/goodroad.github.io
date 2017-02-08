@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+<script>
+
+    var visibleList = ["lat","lng","office","group1","group2"];
+    var url = 'http://rest.goodroad.co.kr/api/reports?page=2&size=10&sort=id,desc';
+    jQuery.ajax({
+        type: 'GET',
+        url: url,
+        success: function(data) {
+            console.log(  data._embedded.reports); //returns all
+
+            var tbl_body = document.createElement("tbody");
+            var odd_even = false;
+            jQuery.each(data._embedded.reports, function() {
+                //console.info(this)
+                var tbl_row = tbl_body.insertRow();
+                tbl_row.className = odd_even ? "odd" : "even";
+                jQuery.each(this, function(k , v) {
+                    var cell = tbl_row.insertCell();
+//                    console.info(k)
+                    if(k == "_links"){
+                        var spiltList = v.self.href.split("/");
+                        var id =  jQuery(spiltList).last()[0];
+                        jQuery(cell).append("<a href='http://goodroad.co.kr/sample/map/map?id="+id+"'>"+v.self.href+"</a>");
+                    }else if(visibleList.indexOf(k) > -1 ){
+
+                        cell.appendChild(document.createTextNode(v));
+                    }
+                })
+                odd_even = !odd_even;
+
+            })
+            console.info(tbl_body);
+
+            jQuery('#t').append(tbl_body);
+        }
+    });
+
+
+</script>
+<body>
+
+<table id="t" border="1"></table>
+</body>
+</html>

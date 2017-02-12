@@ -9,21 +9,6 @@
 </head>
 <script>
 
-    var getUrlParameter = function getUrlParameter(sParam) {
-        var sPageURL = decodeURIComponent(window.location.search.substring(1)),
-            sURLVariables = sPageURL.split('&'),
-            sParameterName,
-            i;
-
-        for (i = 0; i < sURLVariables.length; i++) {
-            sParameterName = sURLVariables[i].split('=');
-
-            if (sParameterName[0] === sParam) {
-                return sParameterName[1] === undefined ? true : sParameterName[1];
-            }
-        }
-    };
-
     var page = getUrlParameter("page");
     var visibleList = ["lat","lng","pos","road","pos","group1","group2","writeDate","status","writerType","file"];
     var url = 'http://rest.goodroad.co.kr/api/reports?page='+page+'&size=100&sort=id,desc';

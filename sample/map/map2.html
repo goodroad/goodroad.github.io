@@ -10,12 +10,13 @@
         #centerAddr {display:block;margin-top:2px;font-weight: normal;}
         .bAddr {padding:5px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
     </style>
+    <script src="../js/common.js"></script>
 </head>
 <body>
 <div class="map_wrap">
     <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
     <div class="hAddr">
-        <span class="title">지도중심기준 행정동 주소정보</span>
+        <span class="title">좌표기준 주소정보</span>
         <span id="centerAddr"></span>
     </div>
 </div>
@@ -23,7 +24,11 @@
 <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=6c8b5962143b5a1331b52b5403663307&libraries=services"></script>
 <script>
 
-    var latLng =  new daum.maps.LatLng(37.566826, 126.9786567);
+    var lat=  getUrlParameter("lat");
+    var lng=  getUrlParameter("lng");
+
+//    var latLng =  new daum.maps.LatLng(37.566826, 126.9786567);
+    var latLng =  new daum.maps.LatLng(lat, lng);
 
     // 주소-좌표 변환 객체를 생성합니다
     var geocoder = new daum.maps.services.Geocoder();
@@ -39,8 +44,8 @@
     // 지도 좌측상단에 지도 중심좌표에 대한 주소정보를 표출하는 함수입니다
     function displayCenterInfo(status, result) {
         if (status === daum.maps.services.Status.OK) {
-//            var infoDiv = document.getElementById('centerAddr');
-//            infoDiv.innerHTML = result[0].fullName;
+            var infoDiv = document.getElementById('centerAddr');
+            infoDiv.innerHTML = result[0].fullName;
             console.log(result[0]);
         }
     }

@@ -11,7 +11,7 @@
 <script>
 
     var page = getUrlParameter("page");
-    var visibleList = ["lat","lng","pos","road","pos","group1","group2","writeDate","status","writerType","file"];
+    var visibleList = ["lat","lng","pos","road","pos","group1","group2","writeDate","status","writerType","file","address"];
     var url = 'http://rest.goodroad.co.kr/api/reports?page='+page+'&size=100&sort=id,desc';
 
     jQuery.ajax({

@@ -11,8 +11,34 @@
 <script>
 
     var page = getUrlParameter("page");
+    var search = getUrlParameter("search");
+    var name = getUrlParameter("p");
     var visibleList = ["lat","lng","pos","road","pos","group1","group2","writeDate","status","writerType","file","address"];
-    var url = 'http://rest.goodroad.co.kr/api/reports?page='+page+'&size=100&sort=id,desc';
+    var recentUrl = 'http://rest.goodroad.co.kr/api/reports?page='+page+'&size=100&sort=id,desc';
+    var searchGroup1 = 'http://rest.goodroad.co.kr/api/reports/search/group1?p='+name+'&page='+page+'&size=100&sort=id,desc';
+    var searchGroup2 = 'http://rest.goodroad.co.kr/api/reports/search/group2?p='+name+'&page='+page+'&size=100&sort=id,desc';
+    var searchDate = 'http://rest.goodroad.co.kr/api/reports/search/writeDate?p='+name+'&page='+page+'&size=100&sort=id,desc';
+    var searchAddress = 'http://rest.goodroad.co.kr/api/reports/search/address?p='+name+'&page='+page+'&size=100&sort=id,desc';
+
+    var url = recentUrl;
+
+    if(search == "group1"){
+        url = recentUrl;
+    }else if(search == "group2"){
+        url = searchGroup2;
+
+    }else if(search == "group1"){
+        url = searchGroup1;
+
+    }else if(search == "address"){
+        url = searchAddress;
+
+    }else if(search == "searchDate"){
+        url = searchDate;
+    }
+
+
+    console.info(url);
 
     jQuery.ajax({
         type: 'GET',
@@ -35,7 +61,24 @@
                         jQuery(cell).append("<a href='http://goodroad.co.kr/sample/map/map?id="+id+"'>map?id="+id+"</a>");
                     }else if(visibleList.indexOf(k) > -1 ){
 
-                        cell.appendChild(document.createTextNode(v));
+                        if(k == "group1"){
+                            jQuery(cell).append("<a href='http://goodroad.co.kr/sample/page/table.html?search=group1&p="+v+"'>"+v+"</a>");
+
+                        }else if(k == "group2"){
+                            jQuery(cell).append("<a href='http://goodroad.co.kr/sample/page/table.html?search=group2&p="+v+"'>"+v+"</a>");
+
+                        }else if(k == "address"){
+                            jQuery(cell).append("<a href='http://goodroad.co.kr/sample/page/table.html?search=address&p="+v+"'>"+v+"</a>");
+
+                        }else if(k == "writeDate"){
+                            jQuery(cell).append("<a href='http://goodroad.co.kr/sample/page/table.html?search=writeDate&p="+v+"'>"+v+"</a>");
+
+                        }else{
+
+                            cell.appendChild(document.createTextNode(v));
+                        }
+
+
                     }
                 })
                 odd_even = !odd_even;

@@ -16,7 +16,6 @@
         svg .municipality.p6 { fill: rgb(33,113,181); }
         svg .municipality.p7 { fill: rgb(8,81,156); }
         svg .municipality.p8 { fill: rgb(8,48,107); }
-        svg .municipality.p9 { fill: rgb(2, 10, 107); }
         svg text { font-size: 10px; }
     </style>
 </head>
@@ -42,8 +41,8 @@
         .projection(projection);
 
     var quantize = d3.scale.quantize()
-        .domain([0, 1000])
-        .range(d3.range(9).map(function(i) { return "p" + i; }));
+        .domain([0, 10])
+        .range(d3.range(8).map(function(i) { return "p" + i; }));
 
     var popByName = d3.map();
 
@@ -61,8 +60,8 @@
             console.log(d);
             d.properties.population = popByName.get(d.properties.name);
             d.properties.density = d.properties.population / path.area(d);
-//            d.properties.quantized = quantize(d.properties.density);
-            d.properties.quantized = "p"+d.properties.population;
+            d.properties.quantized = quantize(d.properties.population);
+//            d.properties.quantized = "p"+d.properties.population;
         });
 
         svg.selectAll("path")

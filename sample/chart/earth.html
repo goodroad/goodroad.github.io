@@ -18,9 +18,11 @@
         svg .municipality.p8 { fill: rgb(8,48,107); }
         svg text { font-size: 10px; }
     </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </head>
 <body>
 <div id="chart"></div>
+<div id="container"></div>
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script src="http://d3js.org/topojson.v1.min.js"></script>
 <script src="http://d3js.org/queue.v1.min.js"></script>
@@ -41,14 +43,14 @@
         .projection(projection);
 
     var quantize = d3.scale.quantize()
-        .domain([0, 10])
+        .domain([0, 100])
         .range(d3.range(8).map(function(i) { return "p" + i; }));
 
     var popByName = d3.map();
 
     queue()
         .defer(d3.json, "data/municipalities-topo-simple.json")
-        .defer(d3.csv, "data/population-editedcopy.csv", function(d) {
+        .defer(d3.csv, "data/population-edited.csv", function(d) {
             popByName.set(d.name, +d.population);
         })
         .await(ready);
@@ -57,7 +59,7 @@
         var features = topojson.feature(data, data.objects["municipalities-geo"]).features;
 
         features.forEach(function(d) {
-            console.log(d);
+//            console.log(d);
             d.properties.population = popByName.get(d.properties.name);
             d.properties.density = d.properties.population / path.area(d);
             d.properties.quantized = quantize(d.properties.population);
@@ -81,6 +83,40 @@
             .attr("class", "region-label")
             .text(function(d) { return d.properties.name; });
     }
+</script>
+
+<script>
+$.get('data/population-edited.csv', function(data) {
+
+// start the table
+var html = '<table>';
+
+// split into lines
+var rows = data.split("\n");
+
+// parse lines
+rows.forEach( function getvalues(ourrow) {
+
+// start a table row
+html += "<tr>";
+
+    // split line into columns
+    var columns = ourrow.split(",");
+
+    html += "<td>" + columns[0] + "</td>";
+    html += "<td>" + columns[1] + "</td>";
+    html += "<td>" + columns[2] + "</td>";
+
+    // close row
+    html += "</tr>";
+})
+// close table
+html += "</table>";
+
+// insert into div
+$('#container').append(html);
+
+});
 </script>
 </body>
 </html>

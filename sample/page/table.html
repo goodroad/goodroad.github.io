@@ -13,7 +13,7 @@
     var page = getUrlParameter("page");
     var search = getUrlParameter("search");
     var name = getUrlParameter("p");
-    var visibleList = ["lat","lng","pos","road","pos","group1","group2","writeDate","status","writerType","file","address"];
+    var visibleList = ["lat","lng","pos","road","pos","group1","group2","writeDate","writerType","address"];
     var recentUrl = 'http://rest.goodroad.co.kr/api/reports?page='+page+'&size=100&sort=id,desc';
     var searchGroup1 = 'http://rest.goodroad.co.kr/api/reports/search/group1?p='+name+'&page='+page+'&size=100&sort=id,desc';
     var searchGroup2 = 'http://rest.goodroad.co.kr/api/reports/search/group2?p='+name+'&page='+page+'&size=100&sort=id,desc';

@@ -18,6 +18,7 @@
     var searchGroup1 = 'http://rest.goodroad.co.kr/api/reports/search/group1?p='+name+'&page='+page+'&size=100&sort=id,desc';
     var searchGroup2 = 'http://rest.goodroad.co.kr/api/reports/search/group2?p='+name+'&page='+page+'&size=100&sort=id,desc';
     var searchDate = 'http://rest.goodroad.co.kr/api/reports/search/writeDate?p='+name+'&page='+page+'&size=100&sort=id,desc';
+    var searchWriterType = 'http://rest.goodroad.co.kr/api/reports/search/writerType?p='+name+'&page='+page+'&size=100&sort=id,desc';
     var searchAddress = 'http://rest.goodroad.co.kr/api/reports/search/address?p='+name+'&page='+page+'&size=100&sort=id,desc';
 
     var url = recentUrl;
@@ -26,15 +27,14 @@
         url = searchGroup1;
     }else if(search == "group2"){
         url = searchGroup2;
-
     }else if(search == "group1"){
         url = searchGroup1;
-
     }else if(search == "address"){
         url = searchAddress;
-
     }else if(search == "writeDate"){
         url = searchDate;
+    }else if(search == "writerType"){
+        url = searchWriterType;
     }
 
 
@@ -72,6 +72,9 @@
 
                         }else if(k == "writeDate"){
                             jQuery(cell).append("<a href='http://goodroad.co.kr/sample/page/table.html?search=writeDate&p="+v+"'>"+v+"</a>");
+
+                        }else if(k == "writerType"){
+                            jQuery(cell).append("<a href='http://goodroad.co.kr/sample/page/table.html?search=writerType&p="+v+"'>"+v+"</a>");
 
                         }else{
 

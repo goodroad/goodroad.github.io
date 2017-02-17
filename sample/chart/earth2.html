@@ -29,12 +29,23 @@
 <script src="http://www.goodroad.co.kr/js/common.js"></script>
 <script>
 
-//    var page = getUrlParameter("page");
+    //    var page = getUrlParameter("page");
 //    var search = getUrlParameter("search");
 //    var name = getUrlParameter("p");
-    var writeDate = getUrlParameter("writeDate");
 
-    cosole.log(writeDate);
+
+
+    var jsonUrl = "http://rest.goodroad.co.kr/earth2"
+    var writeDate = getUrlParameter("writeDate");
+    if(writeDate == null){
+        console.log("writeDate is null");
+    }else{
+        console.log(writeDate);
+        jsonUrl = jsonUrl + "?p=" + writeDate;
+    }
+
+
+    console.log(jsonUrl);
 
     var width = 960,
         height = 500;
@@ -101,7 +112,7 @@
     function ready(error, data) {
 
         // set cvs data
-        d3.json("http://rest.goodroad.co.kr/earth", function (rowList) {
+        d3.json(jsonUrl, function (rowList) {
 //                console.log(data)
                 rowList.forEach(function (row) {
                     popByName.set(row.name, +row.population);
@@ -109,6 +120,10 @@
 
                 var features = topojson.feature(data, data.objects["municipalities-geo"]).features;
                 features.forEach(function (d) {
+//                    console.log("max val :"+ features.length/10);
+//                    quantize.domain([0,features.length/10]);
+
+
                     d.properties.population = popByName.get(d.properties.name);
                     d.properties.density = d.properties.population / path.area(d);
                     d.properties.quantized = quantize(d.properties.population);

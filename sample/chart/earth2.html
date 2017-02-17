@@ -26,7 +26,16 @@
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script src="http://d3js.org/topojson.v1.min.js"></script>
 <script src="http://d3js.org/queue.v1.min.js"></script>
+<script src="http://rest.goodroad.co.kr/js/common.js"></script>
 <script>
+
+//    var page = getUrlParameter("page");
+//    var search = getUrlParameter("search");
+//    var name = getUrlParameter("p");
+    var writeDate = getUrlParameter("writeDate");
+
+    cosole.log(writeDate);
+
     var width = 960,
         height = 500;
 
@@ -92,7 +101,7 @@
     function ready(error, data) {
 
         // set cvs data
-        d3.json("http://rest.goodroad.co.kr/mandu", function (rowList) {
+        d3.json("http://rest.goodroad.co.kr/earth", function (rowList) {
 //                console.log(data)
                 rowList.forEach(function (row) {
                     popByName.set(row.name, +row.population);

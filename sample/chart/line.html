@@ -33,13 +33,20 @@
     };
 
     var page = getUrlParameter("name");
-    var url = 'http://rest.goodroad.co.kr/api/reports?page='+page+'&size=100&sort=id,desc';
+//    var url = 'http://rest.goodroad.co.kr/api/reports?page='+page+'&size=100&sort=id,desc';
+    var url = 'http://rest.goodroad.co.kr/line';
 
         jQuery.ajax({
             type: 'GET',
             url: url,
             success: function(data) {
-                console.log(  data._embedded.reports); //returns all
+
+                data['2013'].unshift('2013');
+                data['2014'].unshift('2014');
+                data['2015'].unshift('2015');
+                data['2016'].unshift('2016');
+
+//                console.log(  data['2016']); //returns all
 
                 var chart = c3.generate({
                     bindto: '#chart',
@@ -48,6 +55,33 @@
 //                        url : 'data/c3.json',
                         url : 'http://rest.goodroad.co.kr/line',
                         mimeType: 'json',
+                        onclick: function (d) {
+                            console.log("over   ");
+
+                            //unload all
+//                            chart.unload('2013');
+//                            chart.unload('2014');
+//                            chart.unload('2015');
+//                            chart.unload('2016');
+//                            chart.unload('2017');
+//                            chart.clear;
+
+//                            chart.load({
+//                                columns: [
+//                                    data['2016'],
+//                                ],
+//                            });
+//                            chart.hide
+//                            chart.load({
+//                                columns: [
+//                                    data['2016'],
+//                                ],
+//                            });
+//                           i.unload();
+
+                        },
+
+
 //                        url : 'data/c3.data'
 //                        columns: [
 //                            ['data1', 30, 200, 100, 400, 150, 250],
@@ -60,18 +94,29 @@
 
                 setTimeout(function () {
                     chart.unload({
-                        ids: ['2013','2014']
+                        ids: ['2013']
                     });
-                }, 2000);
+                }, 1000);
 
 
                 setTimeout(function () {
                     chart.unload({
-                        ids: ['2015','2016']
+                        ids: ['2014','2015','2016']
                     });
-                }, 5000);
+                }, 3000);
 
 
+//                var a =  data['2016']
+//                var aa =  a.unshift('2016')
+//                console.log(aa);
+
+//                setTimeout(function () {
+//                    chart.load({
+//                        columns: [
+//                            data['2016'],
+//                        ],
+//                    });
+//                }, 5000);
                 //
 
             }

@@ -12,41 +12,74 @@
     <!-- Load d3.js and c3.js -->
     <script src="c3.min.js"></script>
     <script src="http://c3js.org/js/d3-3.5.6.min-77adef17.js"></script>
+    <script src="http://www.goodroad.co.kr/js/common.js"></script>
+
 </head>
 <body>
 <div id="chart"></div>
-
+<br>
+<a href="line2.html?year=2013"> 2013</a>
+<br>
+<a href="line2.html?year=2014"> 2014</a>
+<br>
+<a href="line2.html?year=2015"> 2015</a>
+<br>
+<a href="line2.html?year=2016"> 2016</a>
+<br>
+<a href="line2.html?year=2017"> 2017</a>
+<br>
 <script>
-    var getUrlParameter = function getUrlParameter(sParam) {
-        var sPageURL = decodeURIComponent(window.location.search.substring(1)),
-            sURLVariables = sPageURL.split('&'),
-            sParameterName,
-            i;
-
-        for (i = 0; i < sURLVariables.length; i++) {
-            sParameterName = sURLVariables[i].split('=');
-
-            if (sParameterName[0] === sParam) {
-                return sParameterName[1] === undefined ? true : sParameterName[1];
-            }
-        }
-    };
-
     var page = getUrlParameter("name");
-    var url = 'http://rest.goodroad.co.kr/api/reports?page='+page+'&size=100&sort=id,desc';
-
+//    var url = 'http://rest.goodroad.co.kr/api/reports?page='+page+'&size=100&sort=id,desc';
+    var url = 'http://rest.goodroad.co.kr/line';
 
         jQuery.ajax({
             type: 'GET',
             url: url,
             success: function(data) {
-                console.log(  data._embedded.reports); //returns all
+
+                data['2013'].unshift('2013');
+                data['2014'].unshift('2014');
+                data['2015'].unshift('2015');
+                data['2016'].unshift('2016');
+
+//                console.log(  data['2016']); //returns all
 
                 var chart = c3.generate({
                     bindto: '#chart',
                     data: {
                         x : 'x',
-                        url : 'data/c3.data'
+//                        url : 'data/c3.json',
+                        url : 'http://rest.goodroad.co.kr/line',
+                        mimeType: 'json',
+                        onclick: function (d) {
+                            console.log("over   ");
+
+                            //unload all
+//                            chart.unload('2013');
+//                            chart.unload('2014');
+//                            chart.unload('2015');
+//                            chart.unload('2016');
+//                            chart.unload('2017');
+//                            chart.clear;
+
+//                            chart.load({
+//                                columns: [
+//                                    data['2016'],
+//                                ],
+//                            });
+//                            chart.hide
+//                            chart.load({
+//                                columns: [
+//                                    data['2016'],
+//                                ],
+//                            });
+//                           i.unload();
+
+                        },
+
+
+//                        url : 'data/c3.data'
 //                        columns: [
 //                            ['data1', 30, 200, 100, 400, 150, 250],
 //                            ['data2', 50, 20, 10, 40, 15, 25]
@@ -54,6 +87,33 @@
 
                     }
                 });
+
+
+                setTimeout(function () {
+                    chart.unload({
+                        ids: ['2013']
+                    });
+                }, 1000);
+
+
+                setTimeout(function () {
+                    chart.unload({
+                        ids: ['2014','2015','2016']
+                    });
+                }, 3000);
+
+
+//                var a =  data['2016']
+//                var aa =  a.unshift('2016')
+//                console.log(aa);
+
+//                setTimeout(function () {
+//                    chart.load({
+//                        columns: [
+//                            data['2016'],
+//                        ],
+//                    });
+//                }, 5000);
                 //
 
             }

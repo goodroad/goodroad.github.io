@@ -47,8 +47,8 @@
 
     console.log(jsonUrl);
 
-    var width = 960,
-        height = 500;
+    var width = 480,
+        height = 600;
 
     var svg = d3.select("#chart").append("svg")
         .attr("width", width)
@@ -56,7 +56,7 @@
 
     var projection = d3.geo.mercator()
         .center([128, 36])
-        .scale(4000)
+        .scale(5000)
         .translate([width/2, height/2]);
 
     var path = d3.geo.path()
@@ -100,7 +100,7 @@
             }else{
                 html += "<tr>";
                 html += "<td>" + columns[0] + "</td>";
-                html += "<td>" + columns[1] + "</td>";
+                html += "<td><a href='http://goodroad.co.kr/sample/page/table.html?search=address&p="+columns[1].replace("\"","").replace("\"","")+"'>" + columns[1] + "</a></td>";
                 html += "<td>" + columns[2] + "</td>";
                 html += "</tr>";
             }
@@ -119,6 +119,10 @@
 //                console.log(data)
                 rowList.forEach(function (row) {
                     popByName.set(row.name, +row.population);
+                    if(row.name == "전국"){
+                        console.log(row.population/10);
+                        quantize.domain([0,row.population/10]);
+                    }
                 });
 
                 var features = topojson.feature(data, data.objects["municipalities-geo"]).features;
@@ -126,6 +130,7 @@
 //                    console.log("max val :"+ features.length/10);
 //                    quantize.domain([0,features.length/10]);
 
+//                    console.log(d.properties.name);
 
                     d.properties.population = popByName.get(d.properties.name);
                     d.properties.density = d.properties.population / path.area(d);

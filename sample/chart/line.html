@@ -12,26 +12,23 @@
     <!-- Load d3.js and c3.js -->
     <script src="c3.min.js"></script>
     <script src="http://c3js.org/js/d3-3.5.6.min-77adef17.js"></script>
+    <script src="http://www.goodroad.co.kr/js/common.js"></script>
+
 </head>
 <body>
 <div id="chart"></div>
-
+<br>
+<a href="line2.html?year=2013"> 2013</a>
+<br>
+<a href="line2.html?year=2014"> 2014</a>
+<br>
+<a href="line2.html?year=2015"> 2015</a>
+<br>
+<a href="line2.html?year=2016"> 2016</a>
+<br>
+<a href="line2.html?year=2017"> 2017</a>
+<br>
 <script>
-    var getUrlParameter = function getUrlParameter(sParam) {
-        var sPageURL = decodeURIComponent(window.location.search.substring(1)),
-            sURLVariables = sPageURL.split('&'),
-            sParameterName,
-            i;
-
-        for (i = 0; i < sURLVariables.length; i++) {
-            sParameterName = sURLVariables[i].split('=');
-
-            if (sParameterName[0] === sParam) {
-                return sParameterName[1] === undefined ? true : sParameterName[1];
-            }
-        }
-    };
-
     var page = getUrlParameter("name");
 //    var url = 'http://rest.goodroad.co.kr/api/reports?page='+page+'&size=100&sort=id,desc';
     var url = 'http://rest.goodroad.co.kr/line';

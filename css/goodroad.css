@@ -1,0 +1,7 @@
+@media (min-width: 768px) {
+    .navbar-custom.affix {
+        background-color: #ffeb05;
+    }
+    .navbar-custom.affix .navbar-brand {
+    }
+}

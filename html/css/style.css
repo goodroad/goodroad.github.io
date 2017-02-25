@@ -432,12 +432,28 @@ div.gui.menu a:hover, div.menu a.on{
     background-color:rgba(238,195,20, 0.7);
 }
 .card .card-text {
-    width: 100%;
+    float:left;
+    width: calc(100% - 50px);
     min-height: 100px;
     padding: 12px;
     color:#31312f;
 }
+.card .popup-btn {
+    float:right;
+    width: 30px;
+    height: 30px;
+    background:url('/html/images/link_off.gif');
+    background-repeat: no-repeat;
+    background-size: 17px 14px;
+    margin: 10px -3px 0px 0px;
+}
 
+.card:hover .popup-btn {
+    background:url('/html/images/link_on.gif');
+    background-repeat: no-repeat;
+    background-size: 17px 14px;
+    margin: 10px -3px 0px 0px;
+}
 .card:hover .card-text {
     color:#be8b10;
 }

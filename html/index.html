@@ -1,52 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="viewport" content="width=device-width, user-scalable=no">
     <meta charset="UTF-8">
     <title>굿로드</title>
-    <link rel="stylesheet" href="css/style.css">
+    <script src="/html/js/jquery-3.1.1.min.js"></script>
+    <script src="//cdn.rawgit.com/noelboss/featherlight/1.7.1/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/html/js/scrollspy.js"></script>
+    <link rel="stylesheet" href="/html/css/style.css">
+    <link rel="stylesheet" href="/html/css/image.css">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/font-iropke-batang/1.2/font-iropke-batang.css">
-    <link rel="stylesheet" type="text/css" href="semantic/semantic.min.css"/>
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-    <script src="/web/html/js/scrollspy.js"></script>
+    <link rel="stylesheet" type="text/css" href="/html/semantic/semantic.min.css"/>
+    <link href="//cdn.rawgit.com/noelboss/featherlight/1.7.1/release/featherlight.min.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
 <div id="wrap">
     <div id="top_menu" class="fixed top-menu">
-        <div class="ui container">
-            <div id="menu-group" class="gui menu righted">
+        <div id="menu-group" class="ui container">
+            <a class="logo menu-btn" href="/html/index.html#header"><img src="/html/images/intro_logo.png" class="intro-logo"/></a>
+            <div class="gui menu righted">
                 <a href="#page1" class="gui on menu-btn">굿로드 소개</a>
-                <a href="#page2" class="menu-btn">로드킬이란?</a>
-                <a href="#page3" class="menu-btn">로드킬 지표</a>
+                <a href="/html/stat.html">로드킬 지표</a>
+                <a href="/html/news.html">굿로드 뉴스</a>
             </div>
         </div>
     </div>
-    <div id="header_wrap" class="intro">
+    <div id="header" class="intro">
         <div class="overlay"></div>
         <div class="title-section">
-            로드킬
+            <img src="/html/images/intro_title.png" class="intro-title"/>
         </div>
     </div>
     <div class="contents">
-        <div id="page1" class="content-section card ">
+        <div id="page1" class="content-section">
             <div class="page-inner page-center">
-                awef
-            </div>
-        </div>
-        <div id="page2" class="content-section card2">
-            <div class="page-inner page-center">
-                awef
+                굿로드 소개
+                <a href="javascript:return 0" data-featherlight="#appIntro">앱 설치방법</a>
             </div>
         </div>
         <div id="page3" class="content-section card3">
             <div class="page-inner page-center">
-                awef
+                 로드킬 지표
+            </div>
+        </div>
+        <div id="page2" class="content-section card2">
+            <div class="page-inner page-center">
+                굿로드 뉴스
             </div>
         </div>
     </div>
     <div class="footer">
         <div class="page-center">
-            aa
+            푸터
         </div>
+    </div>
+</div>
+<div id="appIntro">
+    <div class="appIntro-inner">
+        굿로드 앱을 소개합니다. @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
     </div>
 </div>
 <script>
@@ -54,7 +65,7 @@
         $('#menu-group .menu-btn').on('click', function (event) {
             event.preventDefault();
             $('html, body').animate({
-                scrollTop: $(this.hash).offset().top
+                scrollTop: $(this.hash).offset().top - 50
             }, 300);
         });
         $('.content-section').scrollSpy();

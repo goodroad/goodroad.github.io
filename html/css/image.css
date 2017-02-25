@@ -6,5 +6,15 @@
     color: #cccdce;
     text-align: center;
 }
-.intro-logo { width: 50px; height: auto; }
-.intro-title { width: 400px; height: auto; }
+.intro-logo { width: 50px; height: auto; margin-left: 10px; }
+.intro-title {
+    width: 280px;
+    height: auto;
+}
+@media only screen and (min-width: 1200px) {
+    .intro-title {
+        width: 400px;
+        height: auto;
+    }
+    .intro-logo { width: 50px; height: auto; margin-left: 0px; }
+}

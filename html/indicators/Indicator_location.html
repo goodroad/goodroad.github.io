@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>로드킬 지표</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/font-iropke-batang/1.2/font-iropke-batang.css">
+  <link rel="stylesheet" type="text/css" href="../semantic/semantic.min.css"/>
+
+  <style>
+    svg .municipality { fill: red; }
+    svg .municipality:hover { stroke: #333; }
+    svg .municipality.p0 { fill: rgb(247, 251, 255); }
+    svg .municipality.p1 { fill: rgb(222, 235, 247); }
+    svg .municipality.p2 { fill: rgb(198, 219, 239); }
+    svg .municipality.p3 { fill: rgb(158, 202, 225); }
+    svg .municipality.p4 { fill: rgb(107, 174, 214); }
+    svg .municipality.p5 { fill: rgb(66, 146, 198); }
+    svg .municipality.p6 { fill: rgb(33, 113, 181); }
+    svg .municipality.p7 { fill: rgb(8, 81, 156); }
+    svg .municipality.p8 { fill: rgb(8, 48, 107); }
+    svg text { font-size: 7px; }
+  </style>
+</head>
+<body>
+<div id="wrap">
+  <div id="top_menu" class="fixed top-menu">
+    <div class="ui container">
+      <div id="menu-group" class="gui menu righted">
+        <a href="#page1" class="gui menu-btn">굿로드 소개</a>
+        <a href="#page2" class="menu-btn">로드킬이란?</a>
+        <a href="#page3" class="on menu-btn">로드킬 지표</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="contents" style="margin-top: 60px;">
+    <div class="ui secondary pointing menu">
+      <a class="item" href="./indicator_map.html">로드킬 전체지도</a>
+      <a class="active item" href="./indicator_location.html">지역별</a>
+      <a class="item" href="./indicator_animal.html">동물별</a>
+      <a class="item" href="./indicator_month.html">월별</a>
+    </div>
+    <div class="ui segment">
+
+      <div>
+        <select id="year" class="ui dropdown">
+        </select>
+
+        <select id="animalType" class="ui dropdown">
+          <option value="">동물종 선택</option>
+        </select>
+
+        <select id="animal" class="ui dropdown">
+          <option value="">동물 선택</option>
+        </select>
+
+        <button id="searchBtn" class="ui button">검색</button>
+      </div>
+
+      <div id="chart" align="center"></div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="page-center">
+    </div>
+  </div>
+</div>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://d3js.org/topojson.v1.min.js"></script>
+<script src="http://d3js.org/queue.v1.min.js"></script>
+<script src="http://www.goodroad.co.kr/js/common.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="../js/goodroad-selectbox-data.js"></script>
+<script>
+  var width = 480, height = 600;
+
+  var svg = d3.select("#chart").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+  var projection = d3.geo.mercator()
+    .center([128, 36])
+    .scale(5500)
+    .translate([width / 2, height / 2]);
+
+  var path = d3.geo.path()
+    .projection(projection);
+
+  var quantize = d3.scale.quantize()
+    .domain([0, 100])
+    .range(d3.range(8).map(function (i) {
+      return "p" + i;
+    }));
+
+  var popByName = d3.map();
+
+  function ready(error, data) {
+    // set cvs data
+      d3.json(getJsonUrl(), function (rowList) {
+      rowList.forEach(function (row) {
+        popByName.set(row.name, +row.population);
+        if (row.name == "전국") {
+          console.log(row.population / 10);
+          quantize.domain([0, row.population / 10]);
+        }
+      });
+
+      var features = topojson.feature(data, data.objects["municipalities-geo"]).features;
+      features.forEach(function (d) {
+        d.properties.population = popByName.get(d.properties.name);
+        d.properties.density = d.properties.population / path.area(d);
+        d.properties.quantized = quantize(d.properties.population);
+      });
+
+      svg.selectAll("path")
+        .data(features)
+        .enter().append("path")
+        .attr("class", function (d) {
+          return "municipality " + d.properties.quantized;
+        })
+        .attr("d", path)
+        .attr("id", function (d) {
+          return d.properties.name;
+        })
+        .append("title")
+        .text(function (d) {
+          return d.properties.name + ": " + d.properties.population + "건"
+        });
+
+      svg.selectAll("text")
+        .data(features.filter(function (d) {
+          return d.properties.name.endsWith("시");
+        }))
+        .enter().append("text")
+        .attr("transform", function (d) {
+          return "translate(" + path.centroid(d) + ")";
+        })
+        .attr("dy", ".35em")
+        .attr("class", "region-label")
+        .text(function (d) {
+          return d.properties.name;
+        });
+      }
+    )
+  }
+
+  function getJsonUrl(){
+    var jsonUrl = "http://rest.goodroad.co.kr/earth2"
+    var writeDate = $('#year').val();
+    if (writeDate) {
+      jsonUrl = jsonUrl + "?p=" + writeDate;
+    }
+
+    return jsonUrl;
+  }
+
+  function drawMap(){
+    queue()
+    .defer(d3.json, "../data/municipalities-topo-simple.json")
+    .await(ready);
+  }
+
+  var dataMap = new Map();
+  dataMap.set('포유류', _mammaliaArr);
+  dataMap.set('조류', _birdsArr);
+  dataMap.set('파충류', _reptileArr);
+  dataMap.set('양서류', _amphibiaArr);
+  $(document).ready(function(){
+    $('#year').setYearSelectData();
+
+    $('#animalType')
+    .setSelectData(_animalTypeArr, '동물종 선택')
+    .on('change', function(){
+      $('#animal').setSelectData(dataMap.get(this.value), '동물 선택');
+    });
+
+    $('#searchBtn').click(function(){
+      $('#chart').html('');
+      svg = d3.select("#chart")
+        .append("svg")
+        .attr("width", width)
+        .attr("height", height);
+      drawMap();
+    });
+
+    drawMap();
+  });
+</script>
+</body>
+</html>

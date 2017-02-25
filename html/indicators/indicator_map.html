@@ -1,8 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <title>로드킬 사고발생 지도</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/font-iropke-batang/1.2/font-iropke-batang.css">
+    <link rel="stylesheet" type="text/css" href="../semantic/semantic.min.css"/>
 
     <style>
         #container {overflow:hidden;height:500px;position:relative;}
@@ -18,18 +21,53 @@
     </style>
 </head>
 <body>
-<div id="container">
-    <div id="rvWrapper">
-        <div id="roadview" style="width:100%;height:100%;"></div> <!-- 로드뷰를 표시할 div 입니다 -->
-        <div id="close" title="로드뷰닫기" onclick="closeRoadview()"><span class="img"></span></div>
+<div id="wrap">
+    <div id="top_menu" class="fixed top-menu">
+        <div class="ui container">
+            <div id="menu-group" class="gui menu righted">
+                <a href="#page1" class="gui menu-btn">굿로드 소개</a>
+                <a href="#page2" class="menu-btn">로드킬이란?</a>
+                <a href="#page3" class="on menu-btn">로드킬 지표</a>
+            </div>
+        </div>
     </div>
-    <div id="mapWrapper">
-        <div id="map" style="width:100%;height:100%;"></div>
-        <div id="roadviewControl" onclick="setRoadviewRoad()"><span>로드뷰</span></div>
+
+    <div class="contents" style="margin-top: 60px;">
+        <div class="ui secondary pointing menu">
+            <a class="active item" href="./indicator_map.html">로드킬 전체지도</a>
+            <a class="item" href="./indicator_location.html">지역별</a>
+            <a class="item" href="./indicator_animal.html">동물별</a>
+            <a class="item" href="./indicator_month.html">월별</a>
+        </div>
+        <div class="ui segment">
+
+            <div>
+                <select id="year" class="ui dropdown">
+                </select>
+
+                <button id="searchBtn" class="ui button">검색</button>
+            </div>
+
+            <div id="container">
+                <div id="rvWrapper">
+                    <div id="roadview" style="width:100%;height:100%;"></div> <!-- 로드뷰를 표시할 div 입니다 -->
+                    <div id="close" title="로드뷰닫기" onclick="closeRoadview()"><span class="img"></span></div>
+                </div>
+                <div id="mapWrapper">
+                    <div id="map" style="width:100%;height:100%;"></div>
+                    <div id="roadviewControl" onclick="setRoadviewRoad()"><span>로드뷰</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="page-center">
+        </div>
     </div>
 </div>
-
-<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="../js/goodroad-selectbox-data.js"></script>
+<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=6c8b5962143b5a1331b52b5403663307&libraries=clusterer"></script>
 <script type="text/javascript">
 
   var overlayOn = false, // 지도 위에 로드뷰 오버레이가 추가된 상태를 가지고 있을 변수
@@ -248,10 +286,13 @@
     toggleMapWrapper(true, position);
   }
 
-  $(function(){
-      // 데이터를 가져오기 위해 jQuery를 사용합니다
-      // 데이터를 가져와 마커를 생성하고 클러스터러 객체에 넘겨줍니다
-      $.get("http://rest.goodroad.co.kr/api/reports?size=1000", function(data) {
+
+  $(document).ready(function(){
+    $('#year').setYearSelectData();
+
+    // 데이터를 가져오기 위해 jQuery를 사용합니다
+    // 데이터를 가져와 마커를 생성하고 클러스터러 객체에 넘겨줍니다
+    $.get("http://rest.goodroad.co.kr/api/reports?size=1000", function(data) {
       var markers = $(data._embedded.reports).map(function(i, report) {
         return new daum.maps.Marker({
           position : new daum.maps.LatLng(report.lat, report.lng)
@@ -259,9 +300,10 @@
       });
 
       clusterer.addMarkers(markers);
-      });
-
+    });
   });
 </script>
+</body>
+</html>
 </body>
 </html>

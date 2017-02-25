@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>로드킬 지표</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/font-iropke-batang/1.2/font-iropke-batang.css">
+  <link rel="stylesheet" type="text/css" href="../semantic/semantic.min.css"/>
+  <link rel="stylesheet" href="../css/c3.min.css">
+
+  <style>
+    svg .municipality { fill: red; }
+    svg .municipality:hover { stroke: #333; }
+    svg .municipality.p0 { fill: rgb(247, 251, 255); }
+    svg .municipality.p1 { fill: rgb(222, 235, 247); }
+    svg .municipality.p2 { fill: rgb(198, 219, 239); }
+    svg .municipality.p3 { fill: rgb(158, 202, 225); }
+    svg .municipality.p4 { fill: rgb(107, 174, 214); }
+    svg .municipality.p5 { fill: rgb(66, 146, 198); }
+    svg .municipality.p6 { fill: rgb(33, 113, 181); }
+    svg .municipality.p7 { fill: rgb(8, 81, 156); }
+    svg .municipality.p8 { fill: rgb(8, 48, 107); }
+    svg text { font-size: 7px; }
+  </style>
+</head>
+<body>
+<div id="wrap">
+  <div id="top_menu" class="fixed top-menu">
+    <div class="ui container">
+      <div id="menu-group" class="gui menu righted">
+        <a href="#page1" class="gui menu-btn">굿로드 소개</a>
+        <a href="#page2" class="menu-btn">로드킬이란?</a>
+        <a href="#page3" class="on menu-btn">로드킬 지표</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="contents" style="margin-top: 60px;">
+    <div class="ui secondary pointing menu">
+      <a class="item" href="./indicator_map.html">로드킬 전체지도</a>
+      <a class="item" href="./indicator_location.html">지역별</a>
+      <a class="item" href="./indicator_animal.html">동물별</a>
+      <a class="active item" href="./indicator_month.html">월별</a>
+    </div>
+    <div class="ui segment">
+
+      <div>
+        <select id="year" class="ui dropdown">
+        </select>
+
+        <button id="searchBtn" class="ui button">검색</button>
+      </div>
+
+      <div id="chart"></div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="page-center">
+    </div>
+  </div>
+</div>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="../js/goodroad-selectbox-data.js"></script>
+<script src="../js/c3.min.js"></script>
+<script>
+  var chart = c3.generate({
+    bindto: '#chart',
+    data: {
+      columns: [
+        ['고라니', 30, 50, 100, 200, 150, 250, 12, 12, 21, 34, 11, 12],
+        ['맷돼지', 12, 12, 21, 34, 11, 22, 12, 12, 215, 24, 51, 21],
+        ['참새', 32, 10, 23, 13, 15, 25, 12, 12, 31, 14, 11, 23],
+        ['조류', 13, 2, 7, 4, 13, 20, 12, 12, 11, 31, 21, 42]
+      ]
+    }
+  });
+
+  $(document).ready(function(){
+    $('#year').setYearSelectData();
+  });
+</script>
+</body>
+</html>

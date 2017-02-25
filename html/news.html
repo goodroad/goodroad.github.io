@@ -51,7 +51,6 @@
     </div>
   </div>
 </div>
-
 <script src="http://mustache.github.io/extras/mustache.js"></script>
 <script id="template" type="x-tmpl-mustache">
 {{#items}}
@@ -73,6 +72,8 @@
         var template = $('#template').html();
         Mustache.parse(template);   // optional, speeds up future uses
         var rendered = Mustache.render(template, data);
+
+        console.log(rendered);
         $('#target').html(rendered);
       }
     );

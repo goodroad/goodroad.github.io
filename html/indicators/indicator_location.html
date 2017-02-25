@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>로드킬 지표</title>
   <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/select.css">
   <link rel="stylesheet" href="../css/d3.css">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/font-iropke-batang/1.2/font-iropke-batang.css">
   <link rel="stylesheet" type="text/css" href="../semantic/semantic.min.css"/>
@@ -26,41 +27,46 @@
 <body>
 <div id="wrap">
   <div id="top_menu" class="fixed top-menu">
-    <div class="ui container">
-      <div id="menu-group" class="gui menu righted">
-        <a href="#page1" class="gui menu-btn">굿로드 소개</a>
-        <a href="#page2" class="menu-btn">로드킬이란?</a>
-        <a href="#page3" class="on menu-btn">로드킬 지표</a>
+    <div id="menu-group" class="page-center">
+      <a class="logo menu-btn" href="/html/index.html#header"><img src="/html/images/intro_logo.png" class="intro-logo"/></a>
+      <div class="gui menu righted">
+        <a href="/html/index.html">굿로드 소개</a>
+        <a href="/html/indicators/indicator_map.html" class="gui on menu-btn">로드킬 지표</a>
+        <a href="/html/news.html">굿로드 뉴스</a>
       </div>
     </div>
   </div>
 
-  <div class="contents" style="margin-top: 60px;">
-    <div class="ui secondary pointing menu">
+  <div class="contents" style="margin-top: 100px; padding: 0px 160px;">
+    <div class="ui four item stackable tabs menu" style="height: 30px; border-radius: 0.1rem; box-shadow: none;">
       <a class="item" href="./indicator_map.html">로드킬 전체지도</a>
-      <a class="active item" href="./indicator_location.html">지역별</a>
+      <a style="background-color: #eec314" class="active item" href="./indicator_location.html">지역별</a>
       <a class="item" href="./indicator_animal.html">동물별</a>
       <a class="item" href="./indicator_month.html">월별</a>
     </div>
-    <div class="ui segment">
 
-      <div>
-        <select id="year" class="ui dropdown">
+    <div style="margin-bottom: 10px;">
+      <div class="styled-select">
+        <select id="year">
         </select>
-
-        <select id="animalType" class="ui dropdown">
-          <option value="">동물종 선택</option>
-        </select>
-
-        <select id="animal" class="ui dropdown">
-          <option value="">동물 선택</option>
-        </select>
-
-        <button id="searchBtn" class="ui button">검색</button>
       </div>
 
-      <div id="chart" align="center"></div>
+      <div class="styled-select" style="width: 110px;">
+        <select id="animalType">
+          <option value="">동물종 선택</option>
+        </select>
+      </div>
+
+      <div class="styled-select" style="width: 110px;">
+        <select id="animal">
+          <option value="">동물 선택</option>
+        </select>
+      </div>
+
+      <button id="searchBtn" class="ui button">검색</button>
     </div>
+
+    <div id="chart" align="center"></div>
   </div>
   <div class="footer">
     <div class="page-center">
@@ -74,14 +80,14 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="../js/goodroad-selectbox-data.js"></script>
 <script>
-  var width = 480, height = 650;
+  var width = 700, height = 1000;
   var svg = d3.select("#chart").append("svg")
     .attr("width", width)
     .attr("height", height);
 
   var projection = d3.geo.mercator()
     .center([128, 36])
-    .scale(5500)
+    .scale(8500)
     .translate([width / 2, height / 2]);
 
   var path = d3.geo.path()

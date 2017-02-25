@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>로드킬 사고발생 지도</title>
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/image.css">
+    <link rel="stylesheet" href="../css/select.css">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/font-iropke-batang/1.2/font-iropke-batang.css">
     <link rel="stylesheet" type="text/css" href="../semantic/semantic.min.css"/>
 
@@ -23,40 +25,40 @@
 <body>
 <div id="wrap">
     <div id="top_menu" class="fixed top-menu">
-        <div class="ui container">
-            <div id="menu-group" class="gui menu righted">
-                <a href="#page1" class="gui menu-btn">굿로드 소개</a>
-                <a href="#page2" class="menu-btn">로드킬이란?</a>
-                <a href="#page3" class="on menu-btn">로드킬 지표</a>
+        <div id="menu-group" class="page-center">
+            <a class="logo menu-btn" href="/html/index.html#header"><img src="/html/images/intro_logo.png" class="intro-logo"/></a>
+            <div class="gui menu righted">
+                <a href="/html/index.html">굿로드 소개</a>
+                <a href="/html/indicators/indicator_map.html" class="gui on menu-btn">로드킬 지표</a>
+                <a href="/html/news.html">굿로드 뉴스</a>
             </div>
         </div>
     </div>
 
-    <div class="contents" style="margin-top: 60px;">
-        <div class="ui secondary pointing menu">
-            <a class="active item" href="./indicator_map.html">로드킬 전체지도</a>
+    <div class="contents" style="margin-top: 100px; padding: 0px 160px;">
+        <div class="ui four item stackable tabs menu" style="height: 30px; border-radius: 0.1rem; box-shadow: none;">
+            <a style="background-color: #eec314" class="active item" href="./indicator_map.html">로드킬 전체지도</a>
             <a class="item" href="./indicator_location.html">지역별</a>
             <a class="item" href="./indicator_animal.html">동물별</a>
             <a class="item" href="./indicator_month.html">월별</a>
         </div>
-        <div class="ui segment">
 
-            <div>
-                <select id="year" class="ui dropdown">
+        <div style="margin-bottom: 10px;">
+            <div class="styled-select">
+                <select id="year">
                 </select>
-
-                <button id="searchBtn" class="ui button">검색</button>
             </div>
+            <button id="searchBtn" class="ui button">검색</button>
+        </div>
 
-            <div id="container">
-                <div id="rvWrapper">
-                    <div id="roadview" style="width:100%;height:100%;"></div> <!-- 로드뷰를 표시할 div 입니다 -->
-                    <div id="close" title="로드뷰닫기" onclick="closeRoadview()"><span class="img"></span></div>
-                </div>
-                <div id="mapWrapper">
-                    <div id="map" style="width:100%;height:100%;"></div>
-                    <div id="roadviewControl" onclick="setRoadviewRoad()"><span>로드뷰</span></div>
-                </div>
+        <div id="container">
+            <div id="rvWrapper">
+                <div id="roadview" style="width:100%;height:100%;"></div> <!-- 로드뷰를 표시할 div 입니다 -->
+                <div id="close" title="로드뷰닫기" onclick="closeRoadview()"><span class="img"></span></div>
+            </div>
+            <div id="mapWrapper">
+                <div id="map" style="width:100%;height:100%;"></div>
+                <div id="roadviewControl" onclick="setRoadviewRoad()"><span>로드뷰</span></div>
             </div>
         </div>
     </div>
@@ -66,6 +68,7 @@
     </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="../semantic/semantic.min.js"></script>
 <script src="../js/goodroad-selectbox-data.js"></script>
 <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=6c8b5962143b5a1331b52b5403663307&libraries=clusterer"></script>
 <script type="text/javascript">

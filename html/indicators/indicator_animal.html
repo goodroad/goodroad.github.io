@@ -85,6 +85,9 @@
 
   var pie;
   function initChart(){
+    var width = $(window).width();
+    if(width >= 590){ width = 590; }
+
     var data = [];
     $.get('http://rest.goodroad.co.kr/group1?year=' + $('#year').val(), '', function (remoteData) {
       $.each(remoteData, function(k, v){
@@ -96,7 +99,7 @@
 
       pie = new d3pie("chart", {
         "size": {
-          "canvasWidth": 590,
+          "canvasWidth": width,
           "pieInnerRadius": "60%",
           "pieOuterRadius": "90%"
         },

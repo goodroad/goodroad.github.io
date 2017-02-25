@@ -54,7 +54,7 @@
 <script src="http://mustache.github.io/extras/mustache.js"></script>
 <script id="template" type="x-tmpl-mustache">
 {{#items}}
-  <div class="card">
+  <div class="card" onclick="onLink('{{url}}')">
     <div class="thumb">
       <div class="card-overlay"></div>
       <img src="{{img}}" class="thumb_img"/>
@@ -78,6 +78,10 @@
       }
     );
   });
+
+  function onLink(url){
+    window.location.href = url;
+  }
 </script>
 </body>
 </html>

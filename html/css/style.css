@@ -221,6 +221,9 @@ div.gui.menu a:hover, div.menu a.on{
     color: #edb907;
     min-height: 300px;
 }
+.content-section.tel {
+    background-color: #30282a;
+}
 
 .content-tel {
     width: 269px;

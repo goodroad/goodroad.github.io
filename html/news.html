@@ -1,94 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, user-scalable=no">
-    <meta charset="UTF-8">
-    <title>굿로드</title>
-    <script src="/html/js/jquery-3.1.1.min.js"></script>
-    <script src="//cdn.rawgit.com/noelboss/featherlight/1.7.1/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="/html/js/scrollspy.js"></script>
-    <link rel="stylesheet" href="/html/css/style.css">
-    <link rel="stylesheet" href="/html/css/image.css">
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/font-iropke-batang/1.2/font-iropke-batang.css">
-    <link rel="stylesheet" type="text/css" href="/html/semantic/semantic.min.css"/>
-    <link href="//cdn.rawgit.com/noelboss/featherlight/1.7.1/release/featherlight.min.css" type="text/css" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, user-scalable=no">
+  <meta charset="UTF-8">
+  <title>굿로드</title>
+  <script src="/html/js/jquery-3.1.1.min.js"></script>
+  <script src="//cdn.rawgit.com/noelboss/featherlight/1.7.1/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/html/js/scrollspy.js"></script>
+  <link rel="stylesheet" href="/html/css/style.css">
+  <link rel="stylesheet" href="/html/css/image.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/font-iropke-batang/1.2/font-iropke-batang.css">
+  <link rel="stylesheet" type="text/css" href="/html/semantic/semantic.min.css"/>
+  <link href="//cdn.rawgit.com/noelboss/featherlight/1.7.1/release/featherlight.min.css" type="text/css" rel="stylesheet"/>
 </head>
 <body>
 <div id="wrap">
-    <div id="top_menu" class="fixed top-menu">
-        <div id="menu-group" class="page-center">
-            <a class="logo menu-btn" href="/html/index.html#header"><img src="/html/images/intro_logo.png" class="intro-logo"/></a>
-            <div class="gui menu righted">
-                <a href="index.html#page1" class="gui menu-btn">굿로드 소개</a>
-                <a href="/html/stat.html">로드킬 지표</a>
-                <a href="/html/news.html" class="on">굿로드 뉴스</a>
-</div>
-</div>
-</div>
-    <!-- 컨텐츠 시작  -->
-    <div class="contents submargin">
-        <div id="page1" class="content-section">
-            <div class="page-inner page-center">
-                <div class="line"></div>
-                <div id="card-group" class="section-card">
-                    <!-- 뉴스 시작 부분 -->
-                    <div class="card">
-                        <div class="thumb">
-                            <div class="card-overlay"></div>
-                            <img src="/html/images/greenUnion.png" class="thumb_img"/>
-                        </div>
-                        <div class="card-text">asfasdfasdf</div>
-                        <div class="popup-btn"></div>
-                    </div>
-                    <div class="card">
-                        <div class="thumb">
-                            <div class="card-overlay"></div>
-                            <img src="/html/images/sample1.jpg" class="thumb_img"/>
-                        </div>
-                        <div class="card-text">asfasdfasdf</div>
-                        <div class="popup-btn"></div>
-                    </div>
-                    <div class="card">
-                        <div class="thumb">
-                            <div class="card-overlay"></div>
-                            <img src="/html/images/sample2.jpg" class="thumb_img"/>
-                        </div>
-                        <div class="card-text">asfasdfasdf<br>sdfefe<br>sdfefe<br>sdfefe<br>sdfefe<br>sdfefe<br>sdfefe<br>sdfefe</div>
-                        <div class="popup-btn"></div>
-                    </div>
-                    <div class="card">
-                        <div class="thumb">
-                            <div class="card-overlay"></div>
-                            <img src="/html/images/sample2.jpg" class="thumb_img"/>
-                        </div>
-                        <div class="card-text">asfasdfasdf</div>
-                        <div class="popup-btn"></div>
-                    </div>
-                    <div class="card">
-                        <div class="thumb">
-                            <div class="card-overlay"></div>
-                            <img src="/html/images/sample1.jpg" class="thumb_img"/>
-                        </div>
-                        <div class="card-text">asfasdfasdf</div>
-                        <div class="popup-btn"></div>
-                    </div>
-                    <!-- //뉴스 부분 -->
-                </div>
-                <div id="loading"><img src="images/ajax-loader.gif" height="16" width="16"/></div>
-            </div>
-        </div>
+  <div id="top_menu" class="fixed top-menu">
+    <div id="menu-group" class="page-center">
+      <a class="logo menu-btn" href="/html/index.html#header"><img src="/html/images/intro_logo.png" class="intro-logo"/></a>
+      <div class="gui menu righted">
+        <a href="index.html#page1" class="gui menu-btn">굿로드 소개</a>
+        <a href="/html/stat.html">로드킬 지표</a>
+        <a href="/html/news.html" class="on">굿로드 뉴스</a>
+      </div>
     </div>
-    <div class="footer">
-        <div class="page-center">
-            <div class="line"></div>
-            <div class="banner">
-                <img src="/html/images/organization_union.png" height="45" width="157"/>
-                <img src="/html/images/organization_env.png" height="45" width="157"/>
-                <img src="/html/images/organization_nationalpark.png" height="45" width="157"/>
-                <img src="/html/images/organization_road.png" height="45" width="157"/>
-            </div>
+  </div>
+  <!-- 컨텐츠 시작  -->
+  <div class="contents submargin">
+    <div id="page1" class="content-section">
+      <div class="page-inner page-center">
+        <div class="line"></div>
+        <div id="card-group" class="section-card">
+          <!-- 뉴스 시작 부분 -->
+          <div id="target">Loading...</div>
+          <!-- //뉴스 부분 -->
         </div>
+        <div id="loading"><img src="images/ajax-loader.gif" height="16" width="16"/></div>
+      </div>
     </div>
+  </div>
+  <div class="footer">
+    <div class="page-center">
+      <div class="line"></div>
+      <div class="banner">
+        <img src="/html/images/organization_union.png" height="45" width="157"/>
+        <img src="/html/images/organization_env.png" height="45" width="157"/>
+        <img src="/html/images/organization_nationalpark.png" height="45" width="157"/>
+        <img src="/html/images/organization_road.png" height="45" width="157"/>
+      </div>
+    </div>
+  </div>
 </div>
+
+<script src="http://mustache.github.io/extras/mustache.js"></script>
+<script id="template" type="x-tmpl-mustache">
+{{#items}}
+  <div class="card">
+    <div class="thumb">
+      <div class="card-overlay"></div>
+      <img src="{{img}" class="thumb_img"/>
+    </div>
+    <div class="card-text">{{title}}</div>
+    <div class="popup-btn"></div>
+  </div>
+{{/items}}
+</script>
+<script>
+  var data = {};
+  $(function () {
+    /*$.getJSON(
+      "news.json",
+      function (d) {
+        data = d;
+        var template = $('#template').html();
+        Mustache.parse(template);   // optional, speeds up future uses
+        var rendered = Mustache.render(template, data);
+        $('#target').html(rendered);
+      }
+    );*/
+  });
+</script>
 </body>
 </html>

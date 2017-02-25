@@ -27,11 +27,21 @@
     </div>
     <div id="header" class="intro">
         <div class="overlay"></div>
-        <div class="intro_background">
-
-        </div>
+        <div class="intro_background"> </div>
         <div class="title-section">
             <img src="/html/images/intro_title.png" class="intro-title"/>
+            <div class="title-image"></div>
+            <div class="title-button page-center">
+                <button class="ui gr grYellow button" style="float:left">
+                    <i class="icon caret right"></i>
+                    굿로드 소개
+                </button>
+
+                <button class="ui gr grInvert button" style="float:right">
+                    <i class="icon caret right"></i>
+                    굿로드 지표
+                </button>
+            </div>
         </div>
         <div id="page1" class="intro-section">
             <div class="page-center">
@@ -105,12 +115,6 @@
             $('html, body').animate({
                 scrollTop: $(this.hash).offset().top - 50
             }, 300);
-        });
-        $('.content-section').scrollSpy();
-        $('.content-section').on('scrollSpy:enter', function() {
-            var t = $(this).attr('id');
-            $(".menu a").removeClass('on');
-            $("a[href='#" + t + "']").addClass('on');
         });
     });
 </script>

@@ -152,8 +152,23 @@ div.gui.menu a:hover, div.menu a.on{
 .title-section {
     position:absolute;
     width: 100%;
-    height: 300px;
+    height: 600px;
     top: 200px;
+}
+
+.title-image {
+    width: 100%;
+    height: 250px;
+    margin-top: 50px;
+}
+
+.title-button {
+    position:relative;
+    padding: 0px 200px;
+}
+
+.title-button button {
+    margin: 0 50px;
 }
 
 .overlay {

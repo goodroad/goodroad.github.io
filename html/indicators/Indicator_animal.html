@@ -105,7 +105,7 @@
             "pieDistance": 32
           },
           "inner": {
-            "hideWhenLessThanPercentage": 3
+            "hideWhenLessThanPercentage": 1
           },
           "mainLabel": {
             "fontSize": 11
@@ -134,7 +134,7 @@
         "tooltips": {
           enabled: true,
           type: "placeholder",
-          string: "{value} 건"
+          string: "{label} : {value} 건"
         },
         "misc": {
           "colors": {
@@ -151,7 +151,7 @@
             var label = d.data.label;
 
             if(label == '포유류' || label == '조류' || label == '양서류' || label == '파충류' || label == '기타'){
-              $.get('http://rest.goodroad.co.kr/api/reports/search/group1?p=' + label, '', function (data) {
+              $.get('http://rest.goodroad.co.kr/api/reports/search/group1year?p=' + label + '&year=' + $('#year').val(), '', function (data) {
                 var result = _.chain(data._embedded.reports)
                   .groupBy("group2")
                   .value();

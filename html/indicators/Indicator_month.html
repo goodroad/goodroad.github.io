@@ -43,6 +43,12 @@
       <a class="active item" href="./indicator_month.html">월별</a>
     </div>
     <div class="ui segment">
+      <div>
+        <select id="year" class="ui dropdown">
+        </select>
+
+        <button id="searchBtn" class="ui button">검색</button>
+      </div>
 
       <div id="chart"></div>
     </div>
@@ -58,22 +64,26 @@
 <script src="../js/c3.min.js"></script>
 <script src="../js/common.js"></script>
 <script>
-  var page = getUrlParameter("name");
-  //    var url = 'http://rest.goodroad.co.kr/api/reports?page='+page+'&size=100&sort=id,desc';
-  var url = 'http://rest.goodroad.co.kr/line';
-
-  var chart = c3.generate({
-    bindto: '#chart',
-    data: {
-      x: 'x',
-      url: 'http://rest.goodroad.co.kr/line',
-      mimeType: 'json'
-    }
-  });
-
   $(document).ready(function () {
     $('#year').setYearSelectData();
+
+    $('#searchBtn').click(function(){
+      drawChart();
+    });
+
+    drawChart();
   });
+
+  function drawChart(){
+    var chart = c3.generate({
+      bindto: '#chart',
+      data: {
+        x: 'x',
+        url: 'http://rest.goodroad.co.kr/line4group?year=' + $('#year').val(),
+        mimeType: 'json'
+      }
+    });
+  }
 </script>
 </body>
 </html>

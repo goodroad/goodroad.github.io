@@ -463,3 +463,11 @@ div.gui.menu a:hover, div.menu a.on{
 .card:hover .card-overlay {
     display:block;
 }
+
+#loading {
+    display:none;
+    width: 16px;
+    height: 16px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}

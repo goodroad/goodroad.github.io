@@ -16,7 +16,7 @@
 <body>
 <div id="wrap">
     <div id="top_menu" class="fixed top-menu">
-        <div id="menu-group" class="ui container">
+        <div id="menu-group" class="page-center">
             <a class="logo menu-btn" href="/html/index.html#header"><img src="/html/images/intro_logo.png" class="intro-logo"/></a>
             <div class="gui menu righted">
                 <a href="#page1" class="gui on menu-btn">굿로드 소개</a>
@@ -27,37 +27,85 @@
     </div>
     <div id="header" class="intro">
         <div class="overlay"></div>
+        <div class="intro_background"> </div>
         <div class="title-section">
             <img src="/html/images/intro_title.png" class="intro-title"/>
+            <div class="title-image"></div>
+            <div class="title-button page-center">
+                <button class="ui gr grYellow button" style="float:left">
+                    <i class="icon caret right"></i>
+                    굿로드 소개
+                </button>
+
+                <button class="ui gr grInvert button" style="float:right">
+                    <i class="icon caret right"></i>
+                    굿로드 지표
+                </button>
+            </div>
+        </div>
+        <div id="page1" class="intro-section">
+            <div class="page-center">
+                <div class="column text1">
+                    <div class="intro-text">
+                        <h2>로드킬은 무엇인가요?</h2>
+                        <p><button class="inverted-button">로드킬 안내 파일 다운로드</button></p>
+                        <p style="margin-top:50px;">뉴스를 통해 종종 만날 수 있는 로드킬 소식,
+                            <br/>우리 모두 사람과 동물 모두에게 위험한 것을 알지만
+                            <br/>사고의 빈도수는 좀처럼 줄어들지는 않고 있습니다.
+                            <br/>
+                            <br/>이렇게 위험한 사고가 어디서 발생하는지,
+                            <br/>얼마나 자주 발생하는지 알 수 있다면
+                            <br/>피해갈 수 있는 방법을 찾을 수 있지 않을까요?
+                        </p>
+                    </div>
+                </div>
+                <div class="column text2">
+                    <div class="intro-text">
+                        <h2>로드킬, 이렇게 발생 해요.</h2>
+                        <p style="margin-top:97px;">
+                            굿로드는 로드킬의 데이터를 수집해 사고가 자주
+                            <br/>발생하는 장소와 시기를 알아보고자 하는 마음으로
+                            <br/>만들어졌습니다. 전국 각지에서 앱 신고를 통해 정성껏 모인 데이터를
+                            <br/>통해  어느 도로에 우리가 그동안 알지 못했던
+                            <br/>동물의 생태계를 보호하고  로드킬이 자주 발생하는
+                            <br/>지점에 위험을 줄일 수 있는 방안을 함께 만들어 갑니다.
+                        </p>
+                    </div>
+                </div>
+                <div class="column text3">
+                    <div class="intro-text">
+                        <h2>만약 로드킬을 만났다면…</h2>
+                        <p style="margin-top:97px;">
+                            굿로드는 로드킬의 데이터를 수집해 사고가 자주
+                            <br/>발생하는 장소와 시기를 알아보고자 하는 마음으로
+                            <br/>만들어졌습니다. 전국 각지에서 앱 신고를 통해 정성껏 모인 데이터를
+                            <br/>통해  어느 도로에 우리가 그동안 알지 못했던
+                            <br/>동물의 생태계를 보호하고  로드킬이 자주 발생하는
+                            <br/>지점에 위험을 줄일 수 있는 방안을 함께 만들어 갑니다.
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="contents">
-        <div id="page1" class="content-section">
+        <div class="content-section card">
             <div class="page-inner page-center">
-                굿로드 소개
-                <a href="javascript:return 0" data-featherlight="#appIntro">앱 설치방법</a>
-            </div>
-        </div>
-        <div id="page3" class="content-section card3">
-            <div class="page-inner page-center">
-                 로드킬 지표
-            </div>
-        </div>
-        <div id="page2" class="content-section card2">
-            <div class="page-inner page-center">
-                굿로드 뉴스
+                <div class="content-tel">
+                    <!-- 관련 기관 연락처 -->
+                </div>
             </div>
         </div>
     </div>
     <div class="footer">
         <div class="page-center">
-            푸터
+            <div class="banner">
+                <img src="/html/images/organization_union.png" height="45" width="157"/>
+                <img src="/html/images/organization_env.png" height="45" width="157"/>
+                <img src="/html/images/organization_nationalpark.png" height="45" width="157"/>
+                <img src="/html/images/organization_road.png" height="45" width="157"/>
+            </div>
         </div>
-    </div>
-</div>
-<div id="appIntro">
-    <div class="appIntro-inner">
-        굿로드 앱을 소개합니다. @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
     </div>
 </div>
 <script>
@@ -67,12 +115,6 @@
             $('html, body').animate({
                 scrollTop: $(this.hash).offset().top - 50
             }, 300);
-        });
-        $('.content-section').scrollSpy();
-        $('.content-section').on('scrollSpy:enter', function() {
-            var t = $(this).attr('id');
-            $(".menu a").removeClass('on');
-            $("a[href='#" + t + "']").addClass('on');
         });
     });
 </script>

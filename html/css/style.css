@@ -29,6 +29,14 @@ div.img {
     background-repeat: no-repeat;
 }
 
+div.line {
+    display:inline-block;
+    width: 100%;
+    height: 1px;
+    background-color: #e5e5e5;
+    margin: 5px 2px;
+}
+
 #wrap {
     position: relative;
     float:left;
@@ -161,12 +169,17 @@ div.gui.menu a:hover, div.menu a.on{
     height: 250px;
     margin-top: 50px;
 }
-
 .title-button {
-    position:relative;
-    padding: 0px 200px;
+    position: relative;
+    padding: 0px 10px;
 }
 
+@media only screen and (min-width: 1200px) {
+    .title-button {
+        position: relative;
+        padding: 0px 200px;
+    }
+}
 .title-button button {
     margin: 0 50px;
 }
@@ -186,6 +199,9 @@ div.gui.menu a:hover, div.menu a.on{
     width: 100%;
     height: 100%;
 }
+.contents.submargin {
+    margin-top: 70px;
+}
 .content-section.card {
     background-color: #31282b;
 }
@@ -203,7 +219,6 @@ div.gui.menu a:hover, div.menu a.on{
     right: auto;
     bottom: auto;
     color: #edb907;
-    background: #30282a;
     min-height: 300px;
 }
 
@@ -328,12 +343,63 @@ div.gui.menu a:hover, div.menu a.on{
 }
 
 .footer .banner {
-    width: calc(100% - 100px);
-    display: flex !important;
+    display: block !important;
+    width: 157px;
     top: 0px;
     left: 0px;
     right: auto;
     bottom: auto;
     margin: 20px auto;
 }
-.banner img { float: left; margin:0 auto; }
+
+.banner img { float:left; margin:0 auto; clear:both; }
+
+@media only screen and (min-width: 1200px) {
+    .footer .banner {
+        display: flex !important;
+        width: calc(100% - 100px);
+        text-align:center;
+    }
+    .banner img {
+        margin: 0 auto;
+    }
+}
+
+.section-card {
+    display: table-cell;
+    display: flex;
+    display: -ms-flexbox;
+    width: 1107px;
+    min-height: 400px;
+    flex-wrap: wrap;
+}
+
+.card {
+    position:relative;
+    width: 345px;
+    min-height: 300px;
+    max-height: 400px;
+    border: 1px solid #d7d7d7;
+    margin: 0px 12px 24px 12px;
+}
+
+.card .thumb {
+    width: 100%;
+    height: 200px;
+    overflow:hidden;
+    position:relative;
+}
+.card .thumb img.thumb_img {
+    width: 100%;
+    height: auto;
+
+}
+.card .card-overlay {
+    display:none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color:rgba(238,195,20, 0.7);
+}

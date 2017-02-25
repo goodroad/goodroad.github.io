@@ -366,21 +366,22 @@ div.gui.menu a:hover, div.menu a.on{
 }
 
 .section-card {
-    display: table-cell;
-    display: flex;
-    display: -ms-flexbox;
+    column-count: 3;
+    column-gap: 1em;
     width: 1107px;
     min-height: 400px;
+    flex-direction: row;
     flex-wrap: wrap;
 }
 
 .card {
-    position:relative;
-    width: 345px;
     min-height: 300px;
     max-height: 400px;
     border: 1px solid #d7d7d7;
-    margin: 0px 12px 24px 12px;
+    display: inline-block;
+    margin: 0 0 1em;
+    width: 100%;
+    cursor: pointer;
 }
 
 .card .thumb {
@@ -402,4 +403,17 @@ div.gui.menu a:hover, div.menu a.on{
     bottom: 0;
     right: 0;
     background-color:rgba(238,195,20, 0.7);
+}
+.card .card-text {
+    width: 100%;
+    min-height: 100px;
+    padding: 12px;
+    color:#31312f;
+}
+
+.card:hover .card-text {
+    color:#be8b10;
+}
+.card:hover .card-overlay {
+    display:block;
 }

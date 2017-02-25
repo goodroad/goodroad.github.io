@@ -44,13 +44,6 @@
     </div>
     <div class="ui segment">
 
-      <div>
-        <select id="year" class="ui dropdown">
-        </select>
-
-        <button id="searchBtn" class="ui button">검색</button>
-      </div>
-
       <div id="chart"></div>
     </div>
   </div>
@@ -63,20 +56,22 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="../js/goodroad-selectbox-data.js"></script>
 <script src="../js/c3.min.js"></script>
+<script src="../js/common.js"></script>
 <script>
+  var page = getUrlParameter("name");
+  //    var url = 'http://rest.goodroad.co.kr/api/reports?page='+page+'&size=100&sort=id,desc';
+  var url = 'http://rest.goodroad.co.kr/line';
+
   var chart = c3.generate({
     bindto: '#chart',
     data: {
-      columns: [
-        ['고라니', 30, 50, 100, 200, 150, 250, 12, 12, 21, 34, 11, 12],
-        ['맷돼지', 12, 12, 21, 34, 11, 22, 12, 12, 215, 24, 51, 21],
-        ['참새', 32, 10, 23, 13, 15, 25, 12, 12, 31, 14, 11, 23],
-        ['조류', 13, 2, 7, 4, 13, 20, 12, 12, 11, 31, 21, 42]
-      ]
+      x: 'x',
+      url: 'http://rest.goodroad.co.kr/line',
+      mimeType: 'json'
     }
   });
 
-  $(document).ready(function(){
+  $(document).ready(function () {
     $('#year').setYearSelectData();
   });
 </script>

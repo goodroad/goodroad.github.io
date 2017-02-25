@@ -286,13 +286,10 @@
     toggleMapWrapper(true, position);
   }
 
-
-  $(document).ready(function(){
-    $('#year').setYearSelectData();
-
+  function drawMapMarker(){
     // 데이터를 가져오기 위해 jQuery를 사용합니다
     // 데이터를 가져와 마커를 생성하고 클러스터러 객체에 넘겨줍니다
-    $.get("http://rest.goodroad.co.kr/api/reports?size=1000", function(data) {
+    $.get("http://rest.goodroad.co.kr/api/reports/search/year?p=" + $('#year').val(), function(data) {
       var markers = $(data._embedded.reports).map(function(i, report) {
         return new daum.maps.Marker({
           position : new daum.maps.LatLng(report.lat, report.lng)
@@ -301,6 +298,16 @@
 
       clusterer.addMarkers(markers);
     });
+  }
+
+  $(document).ready(function(){
+    $('#year').setYearSelectData();
+    $('#searchBtn').click(function(){
+      clusterer.clear();
+      drawMapMarker();
+    });
+
+    drawMapMarker();
   });
 </script>
 </body>

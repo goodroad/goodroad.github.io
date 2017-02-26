@@ -650,6 +650,7 @@ div.gui.menu a:hover, div.menu a.on{
 }
 
 .info p{
+    font-family: 'NanumBarunGothic', Arial, Helvetica, sans-serif !important;
     font-size: 14px;
     color: #666666;
 }

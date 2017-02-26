@@ -569,7 +569,15 @@ div.gui.menu a:hover, div.menu a.on{
 .about-goodroad {
     width: 100%;
     background-color: #35302d;
-    height: 352px;
+    height: 452px;
+}
+
+@media only screen and (min-width: 1200px) {
+    .about-goodroad {
+        width: 100%;
+        background-color: #35302d;
+        height: 352px;
+    }
 }
 .goodroad-image {
     position:relative;

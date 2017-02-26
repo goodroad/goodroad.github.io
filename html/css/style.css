@@ -463,9 +463,10 @@ div.gui.menu a:hover, div.menu a.on{
 .card .card-text {
     float:left;
     width: calc(100% - 50px);
-    min-height: 100px;
+    min-height: 90px;
     padding: 12px;
     color:#31312f;
+    font-family: 'NanumBarunGothic', Arial, Helvetica, sans-serif;
 }
 .card .popup-btn {
     float:right;

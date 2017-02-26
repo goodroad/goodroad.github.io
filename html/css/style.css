@@ -504,11 +504,28 @@ div.gui.menu a:hover, div.menu a.on{
     height:  507px;
     background-color: #ede7e4;
 }
+
+@media only screen and (min-width: 1200px) {
+    .about-roadkill {
+        position:relative;
+        width:100%;
+        height:  385px;
+        background-color: #ede7e4;
+        padding-top: 30px;
+    }
+}
+
+.about-roadkill .roadkill-container{
+    width: 927px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
 .about-roadkill .pc .roadkill-text{
-    width: calc(100% - 670px);
-    float:right;
-    height: 507px;
-    padding: 60px 20px 10px 20px;
+    width: calc(100% - 469px);
+    float: right;
+    height: 355px;
+    padding: 15px 20px 10px 20px
 }
 .about-roadkill .mobile .roadkill-text{
     position: relative;
@@ -521,37 +538,37 @@ div.gui.menu a:hover, div.menu a.on{
     letter-spacing: -1px;
     text-align:left;
 }
-.about-text p { margin-top: 60px; font-size: 16px }
+.about-text p { margin-top: 34px; font-size: 15px }
 .mobile .about-text p { font-size: 14px; }
 
 .row { clear:both; }
 
 .about-roadkill .roadkill-image{
     float:left;
-    width: 670px;
-    height: 507px;
+    width: 469px;
+    height: 355px;
     background: url('/html/images/about_image.png');
     background-repeat: no-repeat;
+    background-size: 469px 355px;
 }
 
 .about-goodroad {
     width: 100%;
     background-color: #35302d;
-    height: 503px;
+    height: 352px;
 }
 .goodroad-image {
     position:relative;
-    width: 1607px;
+    width: 1124px;
     margin-left: auto !important;
     margin-right: auto !important;
 }
 .pc .goodroad-text {
     position: absolute;
     width: 600px;
-    height: 503px;
-    left: 159px;
-    top: 0;
-    padding: 100px 20px 10px 120px;
+    height: 303px;
+    left: 60px;
+    top: 44px;
 }
 
 .mobile .goodroad-text {
@@ -572,15 +589,16 @@ div.gui.menu a:hover, div.menu a.on{
 @media only screen and (min-width: 1200px) {
     .about-app {
         width: 100%;
-        height: 796px;
+        height: 557px;
         background: url('/html/images/about_appbg.png');
+        background-size: 112px 557px;
         background-repeat: repeat-x;
     }
 }
 
 .about-app .pc.about-guide {
-    width: 1607px;
-    height: 796px;
+    width: 1124px;
+    height: 557px;
     margin-left: auto !important;
     margin-right: auto !important;
 }
@@ -610,7 +628,7 @@ div.gui.menu a:hover, div.menu a.on{
 .pc.about-credits {
     position:relative;
     width: 100%;
-    height: 503px;
+    height: 340px;
     background: url('/html/images/flower_bg.jpg');
     background-repeat: no-repeat;
     background-size: cover;
@@ -632,7 +650,7 @@ div.gui.menu a:hover, div.menu a.on{
     background-color:rgba(0,0,0, 0.5);
 }
 .pc .about-credits-image {
-    width: 1607px;
+    width: 1124px;
     margin-left: auto !important;
     margin-right: auto !important;
 }

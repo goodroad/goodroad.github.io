@@ -114,7 +114,7 @@
 
   var projection = d3.geo.mercator()
     .center([128, 36])
-    .scale(4000)
+    .scale(scale)
     .translate([width / 2, height / 2]);
 
   var path = d3.geo.path()

@@ -648,3 +648,9 @@ div.gui.menu a:hover, div.menu a.on{
     .pc { display: block; }
     .mobile { display: none; }
 }
+
+.info p{
+    font-family: 'NanumBarunGothic', Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    color: #666666;
+}

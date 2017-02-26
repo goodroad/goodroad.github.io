@@ -1,55 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta name="viewport" content="width=device-width, user-scalable=no">
-  <meta charset="UTF-8">
-  <title>굿로드</title>
-  <script src="/html/js/jquery-3.1.1.min.js"></script>
-  <script src="//cdn.rawgit.com/noelboss/featherlight/1.7.1/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
-  <script src="/html/js/scrollspy.js"></script>
-  <link rel="stylesheet" href="/html/css/style.css">
-  <link rel="stylesheet" href="/html/css/image.css">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/font-iropke-batang/1.2/font-iropke-batang.css">
-  <link rel="stylesheet" type="text/css" href="/html/semantic/semantic.min.css"/>
-  <link href="//cdn.rawgit.com/noelboss/featherlight/1.7.1/release/featherlight.min.css" type="text/css" rel="stylesheet"/>
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <meta charset="UTF-8">
+    <title>굿로드</title>
+    <script src="/html/js/jquery-3.1.1.min.js"></script>
+    <script src="//cdn.rawgit.com/noelboss/featherlight/1.7.1/release/featherlight.min.js" type="text/javascript"
+            charset="utf-8"></script>
+    <script src="/html/js/scrollspy.js"></script>
+    <link rel="stylesheet" href="/html/css/style.css">
+    <link rel="stylesheet" href="/html/css/image.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/font-iropke-batang/1.2/font-iropke-batang.css">
+    <link rel="stylesheet" type="text/css" href="/html/semantic/semantic.min.css"/>
+    <link href="//cdn.rawgit.com/noelboss/featherlight/1.7.1/release/featherlight.min.css" type="text/css"
+          rel="stylesheet"/>
 </head>
 <body>
 <div id="wrap">
-  <div id="top_menu" class="fixed top-menu">
-    <div id="menu-group" class="page-center">
-      <a class="logo menu-btn" href="/html/index.html#header"><img src="/html/images/intro_logo.png" class="intro-logo"/></a>
-      <div class="gui menu righted">
-        <a href="index.html#page1" class="gui menu-btn">굿로드 소개</a>
-        <a href="/html/indicators/indicator_map.html">로드킬 지표</a>
-        <a href="/html/news.html" class="on">굿로드 뉴스</a>
-      </div>
-    </div>
-  </div>
-  <!-- 컨텐츠 시작  -->
-  <div class="contents submargin">
-    <div id="page1" class="content-section">
-      <div class="page-inner page-center">
-        <div class="line"></div>
-        <div id="card-group" class="section-card">
-          <!-- 뉴스 시작 부분 -->
-          <div id="target">Loading...</div>
-          <!-- //뉴스 부분 -->
+    <div id="top_menu" class="fixed top-menu">
+        <div id="menu-group" class="page-center">
+            <a class="logo menu-btn" href="/html/index.html#header"><img src="/html/images/intro_logo.png"
+                                                                         class="intro-logo"/></a>
+            <div class="gui menu righted">
+                <a href="index.html#page1" class="gui menu-btn">굿로드 소개</a>
+                <a href="/html/indicators/indicator_map.html">로드킬 지표</a>
+                <a href="/html/news.html" class="on">굿로드 뉴스</a>
+            </div>
         </div>
-        <div id="loading"><img src="images/ajax-loader.gif" height="16" width="16"/></div>
-      </div>
     </div>
-  </div>
-  <div class="footer">
-    <div class="page-center">
-      <div class="line"></div>
-      <div class="banner">
-        <img src="/html/images/organization_union.png" height="45" width="157"/>
-        <img src="/html/images/organization_env.png" height="45" width="157"/>
-        <img src="/html/images/organization_nationalpark.png" height="45" width="157"/>
-        <img src="/html/images/organization_road.png" height="45" width="157"/>
-      </div>
+    <!-- 컨텐츠 시작  -->
+    <div class="contents submargin">
+        <div id="page1" class="content-section">
+            <div class="page-inner page-center">
+                <div class="line"></div>
+                <div id="card-group" class="section-card">
+                    <!-- 뉴스 시작 부분 -->
+                    <div id="target">Loading...</div>
+                    <!-- //뉴스 부분 -->
+                </div>
+                <div id="loading"><img src="images/ajax-loader.gif" height="16" width="16"/></div>
+            </div>
+        </div>
     </div>
-  </div>
+
+    <div class="footer">
+        <div class=""></div>
+        <div class="page-center">
+            <div class="footer-copy">
+                <div class="copy copy-logo"><img src="images/about_footerlogo.png" height="99" width="112"/></div>
+                <div class="copy copy-text">
+                    <p>‘굿로드’는 공익적 사회변화를 위해 여러 분야의 사람들이 자발적인 참여로 36시간 동안 웹과 어플리케이션 등의 형태로
+                        <br/>아이디어를 실제 구현하는 사회혁신 프로젝트 소셜이노베이션캠프 36을 통해 개발되었습니다.</p>
+                    <p>2017. goranirani All right Reserved</p>
+                    <p></p>
+                    <p><u>문의</u>
+                        <br/>녹색연합
+                        <br/>이메일 greenkorea@greenkorea.org
+                        <br/>전화 02-747-8500
+                        <br/>주소 서울시 성북구 성북로19길 15
+                    </p>
+                </div>
+                <div class="copy copy-sicamp"><img src="images/about_footersicamp.png" height="99" width="264"/></div>
+            </div>
+        </div>
+    </div>
 </div>
 <script src="http://mustache.github.io/extras/mustache.js"></script>
 <script id="template" type="x-tmpl-mustache">
@@ -63,25 +77,26 @@
     <div class="popup-btn"></div>
   </div>
 {{/items}}
+
 </script>
 <script>
-  var data = {};
-  $(function () {
-    $.getJSON("/html/news.json", function (d) {
-        data = d;
-        var template = $('#template').html();
-        Mustache.parse(template);   // optional, speeds up future uses
-        var rendered = Mustache.render(template, data);
+    var data = {};
+    $(function () {
+        $.getJSON("/html/news.json", function (d) {
+                data = d;
+                var template = $('#template').html();
+                Mustache.parse(template);   // optional, speeds up future uses
+                var rendered = Mustache.render(template, data);
 
-        console.log(rendered);
-        $('#target').html(rendered);
-      }
-    );
-  });
+                console.log(rendered);
+                $('#target').html(rendered);
+            }
+        );
+    });
 
-  function onLink(url){
-    window.location.href = url;
-  }
+    function onLink(url) {
+        window.location.href = url;
+    }
 </script>
 </body>
 </html>

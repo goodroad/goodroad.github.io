@@ -281,7 +281,7 @@ div.gui.menu a:hover, div.menu a.on{
 .footer .footer-copy .copy-text{
     width: 100%;
     height: 200px;
-    padding: 0px 5px 0px 20px;
+    padding: 0px 20px 0px 20px;
 }
 .footer .footer-copy p {
     font-family: 'NanumBarunGothic', Arial, Helvetica, sans-serif;
@@ -567,9 +567,7 @@ div.gui.menu a:hover, div.menu a.on{
 .about-app {
     width: 100%;
     height: 500px;
-    background: url('/html/images/about_appbg.png');
-    background-size: 101px 500px;
-    background-repeat: repeat-x;
+    background-color: #eec314;
 }
 @media only screen and (min-width: 1200px) {
     .about-app {
@@ -594,6 +592,19 @@ div.gui.menu a:hover, div.menu a.on{
     background-repeat: no-repeat;
     background-position: center;
     background-size: 360px 490px;
+}
+.about-market.mobile {
+    background: url('/html/images/about_appbg.png');
+    background-size: 76px 380px;
+    background-repeat: repeat-x;
+}
+.about-market.mobile .about-market {
+    width: 100%;
+    height: 380px;
+    background: url('/html/images/about_market_mobile.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 360px 373px;
 }
 
 .pc.about-credits {

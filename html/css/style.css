@@ -672,3 +672,9 @@ div.gui.menu a:hover, div.menu a.on{
     font-size: 14px;
     color: #666666;
 }
+
+.footer-line{
+    height: 1px;
+    margin: 30px 0px 25px 0px;
+    background-color: #e5e5e5
+}

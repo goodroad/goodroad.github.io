@@ -138,7 +138,7 @@
       rowList.forEach(function (row) {
         popByName.set(row.name, +row.population);
         if (row.name == "전국") {
-          console.log(row.population / 10);
+          //console.log(row.population / 10);
           quantize.domain([0, row.population / 10]);
         }
       });

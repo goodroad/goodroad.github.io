@@ -85,15 +85,13 @@
                 var template = $('#template').html();
                 Mustache.parse(template);   // optional, speeds up future uses
                 var rendered = Mustache.render(template, data);
-
-                console.log(rendered);
                 $('#target').html(rendered);
             }
         );
     });
 
     function onLink(url) {
-        window.location.href = url;
+      window.open(url, "_blank");
     }
 </script>
 </body>

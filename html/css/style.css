@@ -168,7 +168,20 @@ div.gui.menu a:hover, div.menu a.on{
     width: 100%;
     height: 250px;
     margin-top: 50px;
+    background: url('/html/images/intro_top.png');
+    background-size: 280px,88px;
+    background-position-x: center;
+    background-position-y: top;
+    background-repeat: no-repeat;
 }
+
+@media only screen and (min-width: 1200px) {
+    .title-image {
+        background-size: 400px 127px;
+    }
+
+}
+
 .title-button {
     position: relative;
     padding: 0px 10px;
@@ -556,7 +569,15 @@ div.gui.menu a:hover, div.menu a.on{
 .about-goodroad {
     width: 100%;
     background-color: #35302d;
-    height: 352px;
+    height: 452px;
+}
+
+@media only screen and (min-width: 1200px) {
+    .about-goodroad {
+        width: 100%;
+        background-color: #35302d;
+        height: 352px;
+    }
 }
 .goodroad-image {
     position:relative;

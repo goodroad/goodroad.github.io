@@ -6,18 +6,21 @@ var _amphibiaArr = ['개구리', '두꺼비', '도롱뇽']
 var minYear = 2012
 
 ;(function ($) {
-  $.fn.setYearSelectData = function () {
+  $.fn.setYearSelectData = function (init) {
     return this.each(function () {
-        console.log("1");
       var target = this;
       var year = new Date().getFullYear();
 
-      var selectList ;
+      // var selectList = '<option value="recent">' + "최근100" + '</option>';
+        var selectList = init;
       for(var i = year; i >= 2012; i--){
           selectList += '<option value="' + i + '">' + i + '</option>';
       }
       $(target).append(selectList);
-      $(target).val(year - 1);
+        if(init == null){
+            $(target).val(year - 1);
+        }else{
+        }
     });
   }
 

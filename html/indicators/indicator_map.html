@@ -339,30 +339,36 @@
 
 
   function drawMapMarker(){
-    // 데이터를 가져오기 위해 jQuery를 사용합니다
-    // 데이터를 가져와 마커를 생성하고 클러스터러 객체에 넘겨줍니다
-    $.get("http://rest.goodroad.co.kr/api/reports/search/year?p=" + $('#year').val(), function(data) {
-      var markers = $(data._embedded.reports).map(function(i, report) {
-        var marker = new daum.maps.Marker({
-           position : new daum.maps.LatLng(report.lat, report.lng)
-          ,clickable: true
-        });
 
-        // 마커에 클릭이벤트를 등록합니다
-        daum.maps.event.addListener(marker, 'click', function() {
-            marker['href'] = report._links.self.href;
-            makeinfowindonw(map,marker);
-        });
+      var url = "http://rest.goodroad.co.kr/api/reports/search/year?p=" + $('#year').val();
+     if($('#year').val() == "recent") {
+         url = "http://rest.goodroad.co.kr/api/reports?sort=id,desc&page=0&size=100";
+     }
 
-        return marker;
+      // 데이터를 가져오기 위해 jQuery를 사용합니다
+      // 데이터를 가져와 마커를 생성하고 클러스터러 객체에 넘겨줍니다
+      $.get(url, function (data) {
+          var markers = $(data._embedded.reports).map(function (i, report) {
+              var marker = new daum.maps.Marker({
+                  position: new daum.maps.LatLng(report.lat, report.lng)
+                  , clickable: true
+              });
+
+              // 마커에 클릭이벤트를 등록합니다
+              daum.maps.event.addListener(marker, 'click', function () {
+                  marker['href'] = report._links.self.href;
+                  makeinfowindonw(map, marker);
+              });
+
+              return marker;
+          });
+
+          clusterer.addMarkers(markers);
       });
-
-      clusterer.addMarkers(markers);
-    });
   }
 
   $(document).ready(function(){
-    $('#year').setYearSelectData();
+    $('#year').setYearSelectData('<option value="recent">' + "최근 100" + '</option>');
     $('#searchBtn').click(function(){
       clusterer.clear();
       drawMapMarker();

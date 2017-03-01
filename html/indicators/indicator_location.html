@@ -112,12 +112,14 @@
     scale = 8500;
   }
 
-  var svg = d3.select("#chart").append("svg")
+  var svg = d3.select("#chart")
+    .attr("style", "background-color: deepskyblue")
+    .append("svg")
     .attr("width", width)
     .attr("height", height);
 
   var projection = d3.geo.mercator()
-    .center([128, 36])
+    .center([127.75, 35.94])
     .scale(scale)
     .translate([width / 2, height / 2]);
 
@@ -219,14 +221,15 @@
       $('#animal').setSelectData(dataMap.get(this.value), '동물 선택');
     });
 
-    $('#searchBtn').click(function(){
-      $('#chart').html('');
-      svg = d3.select("#chart")
-        .append("svg")
-        .attr("width", width)
-        .attr("height", height);
-      drawMap();
-    });
+      $('#searchBtn').click(function(){
+          $('#chart').html('');
+          svg = d3.select("#chart")
+              .attr("style", "background-color: deepskyblue")
+              .append("svg")
+              .attr("width", width)
+              .attr("height", height);
+          drawMap();
+      });
 
     drawMap();
   });

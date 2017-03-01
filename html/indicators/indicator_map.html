@@ -310,6 +310,34 @@
     toggleMapWrapper(true, position);
   }
 
+  function makeinfowindonw(map, marker) {
+
+      $.get(marker['href'], function(report) {
+
+          // 마커를 클릭했을 때 마커 위에 표시할 인포윈도우를 생성합니다
+          var iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
+          // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+          var iwContent = '<div style="padding:20px;">';
+          iwContent += report.address;
+          iwContent += ', ' + report.group1;
+          iwContent += ', ' + report.group2;
+          iwContent += ', ' + report.writeDate;
+//          iwContent += ', ' + report.writerType;
+          iwContent += '</div>'
+
+          // 인포윈도우를 생성합니다
+          var infowindow = new daum.maps.InfoWindow({
+              content : iwContent,
+              removable : iwRemoveable
+          });
+
+          // 마커 위에 인포윈도우를 표시합니다
+          infowindow.open(map, marker);
+
+      });
+  }
+
+
   function drawMapMarker(){
     // 데이터를 가져오기 위해 jQuery를 사용합니다
     // 데이터를 가져와 마커를 생성하고 클러스터러 객체에 넘겨줍니다
@@ -320,26 +348,10 @@
           ,clickable: true
         });
 
-        // 마커를 클릭했을 때 마커 위에 표시할 인포윈도우를 생성합니다
-        var iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
-        // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-        var iwContent = '<div style="padding:20px;">';
-        iwContent += report.address;
-        iwContent += ', ' + report.group1;
-        iwContent += ', ' + report.group2;
-        iwContent += ', ' + report.writeDate;
-        iwContent += '</div>'
-
-        // 인포윈도우를 생성합니다
-        var infowindow = new daum.maps.InfoWindow({
-          content : iwContent,
-          removable : iwRemoveable
-        });
-
         // 마커에 클릭이벤트를 등록합니다
         daum.maps.event.addListener(marker, 'click', function() {
-          // 마커 위에 인포윈도우를 표시합니다
-          infowindow.open(map, marker);
+            marker['href'] = report._links.self.href;
+            makeinfowindonw(map,marker);
         });
 
         return marker;

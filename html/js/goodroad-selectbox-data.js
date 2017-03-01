@@ -3,17 +3,20 @@ var _mammaliaArr = ['고라니','너구리','삵','수달','다람쥐','청설�
 var _birdsArr = ['참새류','오리류','올빼미류','매류','수리류','갈매기류','까마귀류','백로류','꿩류']
 var _reptileArr = ['뱀', '도마뱀', '거북이']
 var _amphibiaArr = ['개구리', '두꺼비', '도롱뇽']
+var minYear = 2012
 
 ;(function ($) {
   $.fn.setYearSelectData = function () {
     return this.each(function () {
+        console.log("1");
       var target = this;
       var year = new Date().getFullYear();
 
+      var selectList ;
       for(var i = year; i >= 2012; i--){
-        $(target).append('<option value="' + i + '">' + i + '</option>');
+          selectList += '<option value="' + i + '">' + i + '</option>';
       }
-
+      $(target).append(selectList);
       $(target).val(year - 1);
     });
   }

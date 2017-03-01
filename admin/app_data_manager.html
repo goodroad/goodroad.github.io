@@ -51,7 +51,8 @@
           <th>동물종류</th>
           <th>위치</th>
           <th>사진주소(클릭하여 보기)</th>
-          <th>저장일시</th>
+          <th>기록일시</th>
+          <th>생성일시</th>
         </tr>
         </thead>
 
@@ -88,7 +89,7 @@
       }
     });
 
-    $.get('http://rest.goodroad.co.kr/api/reports?page=0&size=1000&sort=writeDate,desc', '', function (data) {
+    $.get('http://rest.goodroad.co.kr/api/reports?page=0&size=1000&sort=id,desc', '', function (data) {
       var html = '';
       $.each(data._embedded.reports, function(idx, item){
         //console.log(item._links.self.href);
@@ -101,6 +102,7 @@
         html += ' <td>' + item.address + '</td>';
         html += ' <td class="viewImage">' + item.file + '</td>';
         html += ' <td>' + dateFormat(item.writeDate) + '</td>';
+        html += ' <td>' + dateFormat(item.createdDate)+ '</td>';
         html += '</tr>';
         $('#list tbody').append(html);
       });
@@ -118,7 +120,11 @@
   });
 
   function dateFormat(textDate) {
-    return textDate.substr(0, 4) + '-' + textDate.substr(4, 2) + '-' + textDate.substr(6, 2);
+      if(textDate != null) {
+          return textDate.substr(0, 4) + '-' + textDate.substr(4, 2) + '-' + textDate.substr(6, 2);
+      }else{
+          return textDate;
+      }
   }
 
   function deleteData() {
@@ -131,12 +137,19 @@
              type: 'DELETE',
              success: function () {
                location.reload();
-             }
+             },
+             error : function (data) {
+//                 alert(data);
+                 console.log(JSON.parse(data.responseText).message);
+                 alert("관리자에게 문의 하세요.");
+                 console.warn("%c관리자에게 물어보시요","font-size: 50px; color: #bada55; background-color: #fbbd08;color: #eff5d9;")
+             },
            });
         }
       });
     }
   }
+  console.warn("%c고라니라니","font-size: 50px; color: #bada55; background-color: #fbbd08;color: #eff5d9;")
 </script>
 
 

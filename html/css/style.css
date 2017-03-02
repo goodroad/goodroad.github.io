@@ -336,11 +336,14 @@ div.gui.menu a:hover, div.menu a.on{
 }
 .intro-section .column { width: 100%; height: 550px;float:left; clear:both; }
 
-.intro-section .column.text1{ background-color:rgba(238,195,20, 0.7); }
-.intro-section .column.text2{ background-color:rgba(243,204,41, 0.7); }
-.intro-section .column.text3{ background-color:rgba(252,216,70, 0.7); }
+.intro-section .column.text1{ background-color:rgba(238,195,20, 1); }
+.intro-section .column.text2{ background-color:rgba(243,204,41, 1); }
+.intro-section .column.text3{ background-color:rgba(252,216,70, 1); }
 
 @media only screen and (min-width: 1200px) {
+	.intro-section .column.text1{ background-color:rgba(238,195,20, 0.7); }
+	.intro-section .column.text2{ background-color:rgba(243,204,41, 0.7); }
+	.intro-section .column.text3{ background-color:rgba(252,216,70, 0.7); }
     .intro-section {
         position: absolute;
         bottom: 0;

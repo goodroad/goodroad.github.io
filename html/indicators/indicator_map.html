@@ -94,16 +94,18 @@
 <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=6c8b5962143b5a1331b52b5403663307&libraries=clusterer"></script>
 <script type="text/javascript">
 
-  var overlayOn = false, // 지도 위에 로드뷰 오버레이가 추가된 상태를 가지고 있을 변수
-    container = document.getElementById('container'), // 지도와 로드뷰를 감싸고 있는 div 입니다
-    mapWrapper = document.getElementById('mapWrapper'), // 지도를 감싸고 있는 d`iv 입니다
-    mapContainer = document.getElementById('map'), // 지도를 표시할 div 입니다
-    rvContainer = document.getElementById('roadview'); //로드뷰를 표시할 div 입니다
+    var writerTypeMap = {"GOODROAD": "굿로드", "DATA_GO_KR": "공공데이터포털", "ME_GO_KR_DAEGU": "대구환경청", "EX_CO_KR": "한국도로공사"};
 
-  var map = new daum.maps.Map(mapContainer, { // 지도를 표시할 div
-    center : new daum.maps.LatLng(36.2683, 127.6358), // 지도의 중심좌표
-    level : 13 // 지도의 확대 레벨
-  });
+    var overlayOn = false, // 지도 위에 로드뷰 오버레이가 추가된 상태를 가지고 있을 변수
+        container = document.getElementById('container'), // 지도와 로드뷰를 감싸고 있는 div 입니다
+        mapWrapper = document.getElementById('mapWrapper'), // 지도를 감싸고 있는 d`iv 입니다
+        mapContainer = document.getElementById('map'), // 지도를 표시할 div 입니다
+        rvContainer = document.getElementById('roadview'); //로드뷰를 표시할 div 입니다
+
+    var map = new daum.maps.Map(mapContainer, { // 지도를 표시할 div
+        center: new daum.maps.LatLng(36.2683, 127.6358), // 지도의 중심좌표
+        level: 13 // 지도의 확대 레벨
+    });
 
   // 마커 클러스터러를 생성합니다
   var clusterer = new daum.maps.MarkerClusterer({
@@ -322,7 +324,7 @@
           iwContent += ', ' + report.group1;
           iwContent += ', ' + report.group2;
           iwContent += ', ' + report.writeDate;
-//          iwContent += ', ' + report.writerType;
+          iwContent += ', ' + writerTypeMap[report.writerType];
           iwContent += '</div>'
 
           // 인포윈도우를 생성합니다
@@ -376,6 +378,16 @@
 
     drawMapMarker();
   });
+</script>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-92630670-1', 'auto');
+    ga('send', 'pageview');
+
 </script>
 </body>
 </html>

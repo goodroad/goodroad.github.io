@@ -169,7 +169,7 @@
 
       svg.selectAll("text")
         .data(features.filter(function (d) {
-          return d.properties.name.endsWith("시");
+          return endsWith(d,"시");
         }))
         .enter().append("text")
         .attr("transform", function (d) {
@@ -184,6 +184,10 @@
     )
   }
 
+  function endsWith(str, suffix) {
+      return str.length != null && str.indexOf(suffix, str.length - suffix.length) !== -1;
+  }
+
   function getJsonUrl(){
     var jsonUrl = '';
     var year = $('#year').val();
@@ -193,9 +197,9 @@
     if(year && !animalType && !animal){
       jsonUrl = 'http://rest.goodroad.co.kr/earth2?p=' + year
     } else if(year && animalType && !animal){
-      jsonUrl = 'http://rest.goodroad.co.kr/earth3?p=' + year + '&group1=' + animalType
+      jsonUrl = 'http://rest.goodroad.co.kr/earth3?p=' + year + '&group1=' + encodeURI(animalType)
     } else if(year && animalType && animal){
-      jsonUrl = 'http://rest.goodroad.co.kr/earth4?p=' + year + '&group2=' + animal
+      jsonUrl = 'http://rest.goodroad.co.kr/earth4?p=' + year + '&group2=' + encodeURI(animal)
     }
 
     return jsonUrl;

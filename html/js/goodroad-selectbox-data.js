@@ -6,6 +6,32 @@ var _amphibiaArr = ['개구리', '두꺼비', '도롱뇽']
 var minYear = 2012
 
 ;(function ($) {
+  $.ajaxSetup({
+    beforeSend: function(xhr) {
+      var $target = $('.indicator');
+      var width = $target.width();
+      var height = $target.height();
+
+      var textMessage = $('<span>지표를 그리는중 입니다...</span>').css({color: '#ffffff', fontSize: 25, fontFamily: 'NanumBarunGothic, Arial, Helvetica, sans-serif', display: 'table-cell', verticalAlign: 'middle'});
+      $('<div id="loadingIndicator"></div>')
+        .css({
+           position : 'absolute'
+          ,display: 'table'
+          ,top : $target.position().top
+          ,width : width
+          ,height : height
+          ,zIndex : 999
+          ,backgroundColor: 'rgba(238, 195, 20, 0.5)'
+          ,textAlign: 'center'
+        })
+        .html(textMessage)
+        .appendTo($target);
+
+    },complete: function(xhr,status){
+      $('#loadingIndicator').remove();
+    }
+  });
+
   $.fn.setYearSelectData = function (init) {
     return this.each(function () {
       var target = this;

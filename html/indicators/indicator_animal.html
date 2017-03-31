@@ -55,7 +55,7 @@
       <button id="searchBtn" class="ui button">검색</button>
     </div>
 
-    <div id="chart" align="center"></div>
+    <div id="chart" class="indicator" align="center"></div>
 
     <div id="info" class="info" style="margin-top: 10px;" align="right">
       <p>로드킬 자료 제공: 한국도로공사, 국립공원관리공단, 경남야생동물구조센터,전남야생동물구조센터, 충남야생동물구조센터, 김봉균</p>
@@ -195,7 +195,14 @@
                 pie.updateProp("data.content", data);
               });
             }
-          }}
+          }
+          ,onMouseoverSegment: function(info) {
+            console.log("mouseover:", info.data.label);
+          }
+          ,onMouseoutSegment: function(info) {
+            console.log("mouseout:", info);
+          }
+        }
       });
     });
   }

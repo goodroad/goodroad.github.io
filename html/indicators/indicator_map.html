@@ -21,6 +21,7 @@
         #roadviewControl.active span {background: url(http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/mapworker_on.png) no-repeat;color: #4C4E57;}
         #close {position: absolute;padding: 4px;top: 5px;left: 5px;cursor: pointer;background: #fff;border-radius: 4px;border: 1px solid #c8c8c8;box-shadow: 0px 1px #888;}
         #close .img {display: block;background: url(http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/rv_close.png) no-repeat;width: 14px;height: 14px;}
+        .infobox{font-family: 'NanumBarunGothic', Arial, Helvetica, sans-serif;}
     </style>
 </head>
 <body>
@@ -57,7 +58,7 @@
                 <div id="roadview" style="width:100%;height:100%;"></div> <!-- 로드뷰를 표시할 div 입니다 -->
                 <div id="close" title="로드뷰닫기" onclick="closeRoadview()"><span class="img"></span></div>
             </div>
-            <div id="mapWrapper">
+            <div id="mapWrapper" class="indicator">
                 <div id="map" style="width:100%;height:100%;"></div>
                 <div id="roadviewControl" onclick="setRoadviewRoad()"><span>로드뷰</span></div>
             </div>
@@ -314,33 +315,41 @@
 
   function makeinfowindonw(map, marker) {
 
-      $.get(marker['href'], function(report) {
+    $.ajax({
+      url:marker['href']
+     ,type:'get'
+     ,success:function(report){
+        // 마커를 클릭했을 때 마커 위에 표시할 인포윈도우를 생성합니다
+        var iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
+        // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+        var iwContent = '<div class="infobox" style="padding:5px;">';
+        iwContent +=  report.group1;
+        iwContent += ' ' + report.group2;
+        iwContent += '</div>'
+        iwContent += '<div class="infobox" style="padding:0px;">'
+        iwContent += report.address;
+        iwContent += '</div>'
+        iwContent += '<div class="infobox" style="padding:5px;">'
+        iwContent += report.writeDate;
+        iwContent += ' ' + writerTypeMap[report.writerType];
+        iwContent += '</div>'
 
-          // 마커를 클릭했을 때 마커 위에 표시할 인포윈도우를 생성합니다
-          var iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
-          // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-          var iwContent = '<div style="padding:5px;">';
-          iwContent +=  report.group1;
-          iwContent += ' ' + report.group2;
-          iwContent += '</div>'
-          iwContent += '<div style="padding:0px;">'
-          iwContent += report.address;
-          iwContent += '</div>'
-          iwContent += '<div style="padding:5px;">'
-          iwContent += report.writeDate;
-          iwContent += ' ' + writerTypeMap[report.writerType];
-          iwContent += '</div>'
+        // 인포윈도우를 생성합니다
+        var infowindow = new daum.maps.InfoWindow({
+          content : iwContent,
+          removable : iwRemoveable
+        });
 
-          // 인포윈도우를 생성합니다
-          var infowindow = new daum.maps.InfoWindow({
-              content : iwContent,
-              removable : iwRemoveable
-          });
-
-          // 마커 위에 인포윈도우를 표시합니다
-          infowindow.open(map, marker);
-
-      });
+        // 마커 위에 인포윈도우를 표시합니다
+        infowindow.open(map, marker);
+     }
+     ,beforeSend: function() {
+       //nothing..(global ajax에 설정되어있는 loading indicator를 무시)
+      }
+     ,complete: function() {
+       //nothing..(global ajax에 설정되어있는 loading indicator를 무시)
+      }
+   });
   }
 
 

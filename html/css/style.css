@@ -768,12 +768,13 @@ div.gui.menu a:hover, div.menu a.on{
     .pc { display: block; }
     .mobile { display: none; }
 }
-
+.info {
+    width: 1127px;
+    margin: 10px auto;
+}
 .info p{
     font-family: 'NanumBarunGothic', Arial, Helvetica, sans-serif !important;
     font-size: 14px;
-    width: 1127px;
-    margin: 10px auto
     color: #666666;
 }
 

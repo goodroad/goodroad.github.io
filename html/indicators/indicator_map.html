@@ -11,17 +11,6 @@
     <link rel="stylesheet" type="text/css" href="../semantic/semantic.min.css"/>
 
     <style>
-        #container {overflow:hidden;height:500px;position:relative;}
-        #mapWrapper {width:100%;height:500px;z-index:1;}
-        #rvWrapper {width:50%;height:500px;top:0;right:0;position:absolute;z-index:0;}
-        #container.view_roadview #mapWrapper {width: 50%;}
-        #roadviewControl {position:absolute;top:5px;left:5px;width:65px;height:24px;padding:2px;z-index: 1;background: #f7f7f7;border-radius: 4px;border: 1px solid #c8c8c8;box-shadow: 0px 1px #888;cursor: pointer;}
-        #roadviewControl span {background: url(http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/mapworker.png) no-repeat;  padding-left:23px;height:24px;font-size: 12px;display: inline-block;line-height: 2;font-weight: bold;}
-        #roadviewControl.active {background: #ccc;box-shadow: 0px 1px #5F616D;border: 1px solid #7F818A;}
-        #roadviewControl.active span {background: url(http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/mapworker_on.png) no-repeat;color: #4C4E57;}
-        #close {position: absolute;padding: 4px;top: 5px;left: 5px;cursor: pointer;background: #fff;border-radius: 4px;border: 1px solid #c8c8c8;box-shadow: 0px 1px #888;}
-        #close .img {display: block;background: url(http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/rv_close.png) no-repeat;width: 14px;height: 14px;}
-        .infobox{font-family: 'NanumBarunGothic', Arial, Helvetica, sans-serif;}
     </style>
 </head>
 <body>
@@ -37,23 +26,26 @@
         </div>
     </div>
 
-    <div class="contents page-center" style="margin-top: 100px;">
-        <div class="ui four item stackable tabs menu" style="border-radius: 0.1rem; box-shadow: none;">
-            <a style="background-color: #eec314" class="active item" href="./indicator_map.html">로드킬 전체지도</a>
-            <a class="item" href="./indicator_location.html">지역별</a>
-            <a class="item" href="./indicator_animal.html">동물별</a>
-            <a class="item" href="./indicator_month.html">월별</a>
-        </div>
-
-        <div style="margin-bottom: 10px;">
-            <div class="styled-select">
-                <select id="year">
-                </select>
-            </div>
-            <button id="searchBtn" class="ui button">검색</button>
-        </div>
-
+    <div class="contents" style="margin-top: 50px;">
         <div id="container">
+            <div id="side-bar">
+                <div class="side-bar-top">
+                    <p class="side-bar-subject">로드킬 전체 지도</p>
+                </div>
+                <div class="side-bar-middle grid">
+                        <div class="column" onclick="location.href='./indicator_map.html'">로드킬 전체지도</div>
+                        <div class="column right" onclick="location.href='./indicator_location.html'">지역별</div>
+                        <div class="column" onclick="location.href='./indicator_animal.html'">동물별</div>
+                        <div class="column right" onclick="location.href='./indicator_month.html'">월별</div>
+                </div>
+                <div class="side-bar-option">
+                    <div class="styled-select">
+                        <select id="year">
+                        </select>
+                    </div>
+                    <button id="searchBtn" class="ui button">검색</button>
+                </div>
+            </div>
             <div id="rvWrapper">
                 <div id="roadview" style="width:100%;height:100%;"></div> <!-- 로드뷰를 표시할 div 입니다 -->
                 <div id="close" title="로드뷰닫기" onclick="closeRoadview()"><span class="img"></span></div>
@@ -76,9 +68,9 @@
             <div class="footer-copy">
                 <div class="copy copy-logo"><img src="../images/about_footerlogo.png" height="99" width="112"/></div>
                 <div class="copy copy-text">
-                    <p>‘굿로드’는 공익적 사회변화를 위해 여러 분야의 사람들이 자발적인 참여로 36시간 동안 웹과 어플리케이션 등의 형태로
+                    <p>‘굿로드’는 공익적 사회변화를 위해 여러 분야의 사람들이 자발적인 참여하여 36시간 동안 웹과 어플리케이션 등의 형태로
                         <br/>아이디어를 실제 구현하는 사회혁신 프로젝트 소셜이노베이션캠프 36을 통해 개발되었습니다.</p>
-                    <p><u>문의</u>
+                    <p>문의
                         / 녹색연합 / 이메일 greenkorea@greenkorea.org / 전화 02-747-8500 / 주소 서울시 성북구 성북로19길 15
                     </p>
                     <p></p>

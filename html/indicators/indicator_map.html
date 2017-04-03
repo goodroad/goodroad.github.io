@@ -151,22 +151,21 @@
         iwContent +=  report.group1;
         iwContent += ' ' + report.group2;
         iwContent += '</div>'
-        iwContent += '<div class="infobox" style="padding:0px;">'
-        iwContent += report.address;
-        iwContent += '</div>'
         iwContent += '<div class="infobox" style="padding:5px;">'
-        iwContent += report.writeDate;
+        iwContent += report.address ;
+        iwContent += ' ' + report.writeDate;
         iwContent += ' ' + writerTypeMap[report.writerType];
+        iwContent += '  .';
         iwContent += '</div>'
 
-        // 인포윈도우를 생성합니다
-        var infowindow = new daum.maps.InfoWindow({
-          content : iwContent,
-          removable : iwRemoveable
-        });
+            // 인포윈도우를 생성합니다
+            var infowindow = new daum.maps.InfoWindow({
+                content: iwContent,
+                removable: iwRemoveable
+            });
 
-        // 마커 위에 인포윈도우를 표시합니다
-        infowindow.open(map, marker);
+            // 마커 위에 인포윈도우를 표시합니다
+            infowindow.open(map, marker);
      }
      ,beforeSend: function() {
        //nothing..(global ajax에 설정되어있는 loading indicator를 무시)

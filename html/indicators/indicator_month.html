@@ -39,30 +39,25 @@
     </div>
   </div>
 
-  <div class="contents" style="margin-top: 50px;">
-    <div id="container" class="chart-container">
-      <div id="side-bar">
-        <div class="side-bar-top">
-          <p class="side-bar-subject">로드킬 전체 지도</p>
-        </div>
-        <div class="side-bar-middle grid">
-          <div class="column" onclick="location.href='./indicator_map.html'">로드킬 전체지도</div>
-          <div class="column right" onclick="location.href='./indicator_location.html'">지역별</div>
-          <div class="column" onclick="location.href='./indicator_animal.html'">동물별</div>
-          <div class="column right" onclick="location.href='./indicator_month.html'">월별</div>
-        </div>
-        <div class="side-bar-option">
-          <div class="styled-select">
-            <select id="year">
-            </select>
-          </div>
-          <button id="searchBtn" class="ui button">검색</button>
-        </div>
-      </div>
-      <div class="chart-wrapper">
-        <div id="chart" class="indicator right-chart"></div>
-      </div>
+  <div class="contents page-center" style="margin-top: 100px;">
+    <div class="ui four item stackable tabs menu" style="border-radius: 0.1rem; box-shadow: none;">
+      <a class="item" href="./indicator_map.html">로드킬 전체지도</a>
+      <a class="item" href="./indicator_location.html">지역별</a>
+      <a class="item" href="./indicator_animal.html">동물별</a>
+      <a style="background-color: #eec314" class="active item" href="./indicator_month.html">월별</a>
     </div>
+
+    <div style="margin-bottom: 10px;">
+      <div class="styled-select">
+        <select id="year">
+        </select>
+      </div>
+
+      <button id="searchBtn" class="ui button">검색</button>
+    </div>
+
+    <div id="chart" class="indicator"></div>
+
     <div id="info" class="info" style="margin-top: 10px;" align="right">
       <p>로드킬 자료 제공: 한국도로공사, 국립공원관리공단, 경남야생동물구조센터,전남야생동물구조센터, 충남야생동물구조센터, 김봉균</p>
     </div>

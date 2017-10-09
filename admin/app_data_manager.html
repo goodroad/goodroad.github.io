@@ -89,7 +89,7 @@
       }
     });
 
-    $.get('http://rest.goodroad.co.kr/api/reports?page=0&size=1000&sort=id,desc', '', function (data) {
+    $.get('http://rest.goodroad.co.kr/api/reports?page=0&size=100&sort=id,desc', '', function (data) {
       var html = '';
       $.each(data._embedded.reports, function(idx, item){
         //console.log(item._links.self.href);
